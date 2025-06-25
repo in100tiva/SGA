@@ -1,0 +1,4017 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>SGA - Sistema de Gestão Financeira</title>
+    
+    <!-- PWA Meta Tags -->
+    <meta name="description" content="Sistema de Gestão de Agiotagem - Controle completo de clientes, empréstimos e pagamentos">
+    <meta name="theme-color" content="#3b82f6">
+    <meta name="background-color" content="#f8fafc">
+    
+    <!-- iOS Meta Tags -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="apple-mobile-web-app-title" content="SGA Finance">
+    
+    <!-- Icon Links -->
+    <link rel="icon" type="image/png" sizes="32x32" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%233b82f6'/><text x='50' y='60' font-family='Arial,sans-serif' font-size='40' font-weight='bold' text-anchor='middle' fill='white'>SGA</text></svg>">
+    <link rel="icon" type="image/png" sizes="16x16" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%233b82f6'/><text x='50' y='60' font-family='Arial,sans-serif' font-size='40' font-weight='bold' text-anchor='middle' fill='white'>SGA</text></svg>">
+    <link rel="apple-touch-icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 180 180'><rect width='180' height='180' rx='36' fill='%233b82f6'/><text x='90' y='110' font-family='Arial,sans-serif' font-size='60' font-weight='bold' text-anchor='middle' fill='white'>SGA</text></svg>">
+    
+    <!-- Manifest -->
+    <link rel="manifest" href="data:application/json;base64,ewogICJuYW1lIjogIlNHQSAtIFNpc3RlbWEgZGUgR2VzdMOjbyBGaW5hbmNlaXJhIiwKICAic2hvcnRfbmFtZSI6ICJTR0EgRmluYW5jZSIsCiAgImRlc2NyaXB0aW9uIjogIlNpc3RlbWEgZGUgR2VzdMOjbyBkZSBBZ2lvdGFnZW0gLSBDb250cm9sZSBjb21wbGV0byBkZSBjbGllbnRlcywgZW1wcsOpc3RpbW9zIGUgcGFnYW1lbnRvcyIsCiAgInN0YXJ0X3VybCI6ICIvIiwKICAiZGlzcGxheSI6ICJzdGFuZGFsb25lIiwKICAiYmFja2dyb3VuZF9jb2xvciI6ICIjZjhmYWZjIiwKICAidGhlbWVfY29sb3IiOiAiIzNiODJmNiIsCiAgIm9yaWVudGF0aW9uIjogInBvcnRyYWl0IiwKICAiY2F0ZWdvcmllcyI6IFsiZmluYW5jZSIsICJidXNpbmVzcyIsICJwcm9kdWN0aXZpdHkiXSwKICAiaWNvbnMiOiBbCiAgICB7CiAgICAgICJzcmMiOiAiZGF0YTppbWFnZS9zdmcreG1sLDxzdmcgeG1sbnM9J2h0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnJyB2aWV3Qm94PScwIDAgMTkyIDE5Mic+PHJlY3Qgd2lkdGg9JzE5MicgaGVpZ2h0PScxOTInIHJ4PSczOCcgZmlsbD0nJTIzM2I4MmY2Jy8+PHRleHQgeD0nOTYnIHk9JzEyMCcgZm9udC1mYW1pbHk9J0FyaWFsLHNhbnMtc2VyaWYnIGZvbnQtc2l6ZT0nNzAnIGZvbnQtd2VpZ2h0PSdib2xkJyB0ZXh0LWFuY2hvcj0nbWlkZGxlJyBmaWxsPSd3aGl0ZSc+U0dBPC90ZXh0Pjwvc3ZnPiIsCiAgICAgICJzaXplcyI6ICIxOTJ4MTkyIiwKIAgICAgInR5cGUiOiAiaW1hZ2Uvc3ZnK3htbCIsCiAgICAgICJwdXJwb3NlIjogImFueSBtYXNrYWJsZSIKICAgIH0sCiAgICB7CiAgICAgICJzcmMiOiAiZGF0YTppbWFnZS9zdmcreG1sLDxzdmcgeG1sbnM9J2h0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnJyB2aWV3Qm94PScwIDAgNTEyIDUxMic+PHJlY3Qgd2lkdGg9JzUxMicgaGVpZ2h0PSc1MTInIHJ4PSc4MCcgZmlsbD0nJTIzM2I4MmY2Jy8+PHRleHQgeD0nMjU2JyB5PSczMjAnIGZvbnQtZmFtaWx5PSdBcmlhbCxzYW5zLXNlcmlmJyBmb250LXNpemU9JzE4MCcgZm9udC13ZWlnaHQ9J2JvbGQnIHRleHQtYW5jaG9yPSdtaWRkbGUnIGZpbGw9J3doaXRlJz5TR0E8L3RleHQ+PC9zdmc+IiwKICAgICAgInNpemVzIjogIjUxMng1MTIiLAogICAgICAidHlwZSI6ICJpbWFnZS9zdmcreG1sIiwKICAgICAgInB1cnBvc2UiOiAiYW55IG1hc2thYmxlIgogICAgfQogIF0sCiAgInNjcmVlbnNob3RzIjogW10sCiAgInByb3RvY29sX2hhbmRsZXJzIjogW10sCiAgInNoYXJlX3RhcmdldCI6IHsKICAgICJhY3Rpb24iOiAiLyIsCiAgICAibWV0aG9kIjogIkdFVCIsCiAgICAiZW5jdHlwZSI6ICJhcHBsaWNhdGlvbi94LXd3dy1mb3JtLXVybGVuY29kZWQiCiAgfQp9">
+    
+    <!-- Preconnect for performance -->
+    <link rel="preconnect" href="https://cdn.tailwindcss.com">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <style>
+        * {
+            -webkit-tap-highlight-color: transparent;
+            -webkit-touch-callout: none;
+            -webkit-user-select: none;
+            -khtml-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+
+        input, textarea, select {
+            -webkit-user-select: text;
+            -moz-user-select: text;
+            -ms-user-select: text;
+            user-select: text;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        /* PWA Install Prompt */
+        .install-prompt {
+            position: fixed;
+            bottom: 100px;
+            left: 20px;
+            right: 20px;
+            background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
+            color: white;
+            padding: 16px 20px;
+            border-radius: 16px;
+            box-shadow: 0 8px 25px rgba(59, 130, 246, 0.4);
+            z-index: 2500;
+            display: none;
+            align-items: center;
+            gap: 12px;
+            animation: slideUpInstall 0.4s ease-out;
+        }
+
+        .install-prompt.show {
+            display: flex;
+        }
+
+        @keyframes slideUpInstall {
+            from {
+                opacity: 0;
+                transform: translateY(100px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .install-prompt-icon {
+            width: 48px;
+            height: 48px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            flex-shrink: 0;
+        }
+
+        .install-prompt-content {
+            flex: 1;
+        }
+
+        .install-prompt-title {
+            font-weight: 700;
+            font-size: 16px;
+            margin-bottom: 4px;
+        }
+
+        .install-prompt-subtitle {
+            font-size: 14px;
+            opacity: 0.9;
+        }
+
+        .install-prompt-actions {
+            display: flex;
+            gap: 8px;
+            flex-shrink: 0;
+        }
+
+        .install-btn {
+            background: rgba(255, 255, 255, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 14px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .install-btn.primary {
+            background: white;
+            color: #3b82f6;
+        }
+
+        .install-btn:hover {
+            transform: translateY(-1px);
+        }
+
+        .install-btn:active {
+            transform: translateY(0);
+        }
+
+        /* Offline indicator */
+        .offline-indicator {
+            position: fixed;
+            top: 44px;
+            left: 0;
+            right: 0;
+            background: #f59e0b;
+            color: white;
+            padding: 8px 20px;
+            text-align: center;
+            font-size: 14px;
+            font-weight: 600;
+            z-index: 2000;
+            transform: translateY(-100%);
+            transition: transform 0.3s ease;
+        }
+
+        .offline-indicator.show {
+            transform: translateY(0);
+        }
+
+        /* Update available indicator */
+        .update-prompt {
+            position: fixed;
+            top: 60px;
+            left: 20px;
+            right: 20px;
+            background: #10b981;
+            color: white;
+            padding: 12px 16px;
+            border-radius: 12px;
+            font-weight: 600;
+            z-index: 2100;
+            display: none;
+            align-items: center;
+            justify-content: space-between;
+            animation: slideDownUpdate 0.3s ease-out;
+        }
+
+        .update-prompt.show {
+            display: flex;
+        }
+
+        @keyframes slideDownUpdate {
+            from {
+                opacity: 0;
+                transform: translateY(-100%);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .update-btn {
+            background: rgba(255, 255, 255, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            color: white;
+            padding: 6px 12px;
+            border-radius: 6px;
+            font-size: 12px;
+            cursor: pointer;
+            margin-left: 12px;
+        }
+
+        /* App like styling for standalone mode */
+        @media (display-mode: standalone) {
+            .status-bar {
+                padding-top: env(safe-area-inset-top);
+                height: calc(44px + env(safe-area-inset-top));
+            }
+            
+            .content-area {
+                height: calc(100vh - 44px - env(safe-area-inset-top) - 110px);
+            }
+        }
+
+        /* iOS standalone mode detection */
+        @media (display-mode: standalone) and (-webkit-touch-callout: none) {
+            .status-bar {
+                background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+                padding-top: 20px; /* iOS notch compensation */
+            }
+        }
+
+        .app-container {
+            background: #f8fafc;
+            min-height: 100vh;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .status-bar {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            height: 44px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 20px;
+            font-size: 14px;
+            font-weight: 600;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .status-bar::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+            animation: shimmer 3s infinite;
+        }
+
+        @keyframes shimmer {
+            0% { left: -100%; }
+            100% { left: 100%; }
+        }
+
+        .content-area {
+            height: calc(100vh - 44px - 110px);
+            overflow-y: auto;
+            -webkit-overflow-scrolling: touch;
+            position: relative;
+            padding-bottom: 20px;
+        }
+
+        .bottom-nav {
+            position: fixed;
+            bottom: 25px;
+            left: 50%;
+            transform: translateX(-50%);
+            height: 65px;
+            width: auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 5px;
+            z-index: 1000;
+            border-radius: 35px;
+            background: #ffffff;
+            border: 1px solid #e2e8f0;
+            box-shadow: 
+                0 10px 25px rgba(0, 0, 0, 0.1),
+                0 4px 10px rgba(0, 0, 0, 0.05);
+            padding: 8px 16px;
+            margin-bottom: env(safe-area-inset-bottom);
+            animation: navSlideIn 0.5s ease-out;
+        }
+
+        @keyframes navSlideIn {
+            from {
+                opacity: 0;
+                transform: translateX(-50%) translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(-50%) translateY(0);
+            }
+        }
+
+        .nav-item {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #9ca3af;
+            transition: all 0.3s ease;
+            padding: 12px;
+            border-radius: 50%;
+            width: 48px;
+            height: 48px;
+            cursor: pointer;
+            position: relative;
+        }
+
+        .nav-item.active {
+            color: #ffffff;
+            background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
+            box-shadow: 0 4px 15px rgba(59, 130, 246, 0.4);
+            transform: scale(1.1);
+        }
+
+        .nav-item:active {
+            transform: scale(0.95);
+        }
+
+        .nav-item.active:active {
+            transform: scale(1.05);
+        }
+
+        .nav-item i {
+            font-size: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .nav-item span {
+            display: none;
+        }
+
+        /* Hover effect for desktop */
+        @media (hover: hover) {
+            .nav-item:hover:not(.active) {
+                color: #6b7280;
+                background: #f3f4f6;
+                transform: scale(1.05);
+            }
+        }
+
+        /* Dark mode support */
+        @media (prefers-color-scheme: dark) {
+            .bottom-nav {
+                background: #1f2937;
+                border: 1px solid #374151;
+            }
+            
+            .nav-item {
+                color: #9ca3af;
+            }
+            
+            .nav-item:hover:not(.active) {
+                background: #374151;
+                color: #d1d5db;
+            }
+            
+            .nav-item.active {
+                color: #ffffff;
+                background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
+            }
+        }
+
+        .section {
+            display: none;
+            padding: 20px;
+            animation: slideIn 0.3s ease-out;
+        }
+
+        .section.active {
+            display: block;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .card {
+            background: white;
+            border-radius: 16px;
+            padding: 20px;
+            margin-bottom: 16px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+            border: 1px solid #f1f5f9;
+        }
+
+        .card-header {
+            display: flex;
+            align-items: center;
+            justify-content: between;
+            margin-bottom: 16px;
+        }
+
+        .card-title {
+            font-size: 18px;
+            font-weight: 700;
+            color: #1e293b;
+            margin: 0;
+        }
+
+        .kpi-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+            margin-bottom: 20px;
+        }
+
+        .kpi-card {
+            background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
+            color: white;
+            padding: 16px;
+            border-radius: 16px;
+            box-shadow: 0 4px 12px rgba(59, 130, 246, 0.25);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .kpi-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(255,255,255,0.1) 0%, transparent 50%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .kpi-card:hover::before {
+            opacity: 1;
+        }
+
+        .kpi-card:hover {
+            transform: translateY(-2px) scale(1.02);
+            box-shadow: 0 8px 25px rgba(59, 130, 246, 0.4);
+        }
+
+        .kpi-card:active {
+            transform: translateY(0) scale(0.98);
+        }
+
+        .kpi-card.green {
+            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+            box-shadow: 0 4px 12px rgba(16, 185, 129, 0.25);
+        }
+
+        .kpi-card.purple {
+            background: linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%);
+            box-shadow: 0 4px 12px rgba(139, 92, 246, 0.25);
+        }
+
+        .kpi-card.orange {
+            background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+            box-shadow: 0 4px 12px rgba(245, 158, 11, 0.25);
+        }
+
+        .kpi-label {
+            font-size: 12px;
+            opacity: 0.9;
+            margin-bottom: 4px;
+            font-weight: 500;
+        }
+
+        .kpi-value {
+            font-size: 20px;
+            font-weight: 800;
+            margin-bottom: 2px;
+        }
+
+        .kpi-change {
+            font-size: 11px;
+            opacity: 0.8;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
+            color: white;
+            border: none;
+            padding: 14px 20px;
+            border-radius: 12px;
+            font-weight: 600;
+            font-size: 16px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 12px rgba(59, 130, 246, 0.25);
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .btn-primary:active {
+            transform: scale(0.98);
+        }
+
+        .btn-secondary {
+            background: #f1f5f9;
+            color: #475569;
+            border: none;
+            padding: 12px 16px;
+            border-radius: 12px;
+            font-weight: 600;
+            font-size: 14px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .btn-secondary:active {
+            background: #e2e8f0;
+        }
+
+        .fab {
+            position: fixed;
+            bottom: 105px;
+            right: 25px;
+            width: 56px;
+            height: 56px;
+            background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 24px;
+            box-shadow: 
+                0 8px 25px rgba(59, 130, 246, 0.4),
+                0 4px 10px rgba(59, 130, 246, 0.2);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            z-index: 999;
+        }
+
+        .fab:active {
+            transform: scale(0.9);
+        }
+
+        .fab:hover {
+            transform: translateY(-2px) scale(1.05);
+            box-shadow: 
+                0 12px 30px rgba(59, 130, 246, 0.5),
+                0 6px 15px rgba(59, 130, 246, 0.3);
+        }
+
+        .agenda-item {
+            display: flex;
+            align-items: center;
+            padding: 16px;
+            background: white;
+            border-radius: 12px;
+            margin-bottom: 12px;
+            border-left: 4px solid #3b82f6;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+        }
+
+        .agenda-item.overdue {
+            border-left-color: #ef4444;
+            background: #fef2f2;
+        }
+
+        .agenda-item.today {
+            border-left-color: #10b981;
+            background: #f0fdf4;
+        }
+
+        .agenda-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 600;
+            margin-right: 12px;
+            font-size: 14px;
+        }
+
+        .agenda-content {
+            flex: 1;
+        }
+
+        .agenda-name {
+            font-weight: 600;
+            color: #1e293b;
+            margin-bottom: 2px;
+        }
+
+        .agenda-info {
+            font-size: 12px;
+            color: #64748b;
+        }
+
+        .agenda-amount {
+            font-weight: 700;
+            color: #059669;
+            font-size: 16px;
+        }
+
+        .client-item {
+            display: flex;
+            align-items: center;
+            padding: 16px;
+            background: white;
+            border-radius: 12px;
+            margin-bottom: 12px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .client-item:active {
+            transform: scale(0.98);
+            background: #f8fafc;
+        }
+
+        .status-badge {
+            padding: 4px 8px;
+            border-radius: 20px;
+            font-size: 10px;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+
+        .status-em-dia {
+            background: #d1fae5;
+            color: #065f46;
+        }
+
+        .status-atraso {
+            background: #fee2e2;
+            color: #991b1b;
+        }
+
+        .status-novo {
+            background: #fef3c7;
+            color: #92400e;
+        }
+
+        .modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0,0,0,0.5);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 2000;
+            padding: 20px;
+        }
+
+        .modal.active {
+            display: flex;
+        }
+
+        .modal-content {
+            background: white;
+            border-radius: 20px;
+            padding: 24px;
+            width: 100%;
+            max-width: 400px;
+            max-height: 90vh;
+            overflow-y: auto;
+            animation: modalSlideIn 0.3s ease-out;
+        }
+
+        @keyframes modalSlideIn {
+            from {
+                opacity: 0;
+                transform: translateY(50px) scale(0.9);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+
+        .modal-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 20px;
+        }
+
+        .modal-title {
+            font-size: 20px;
+            font-weight: 700;
+            color: #1e293b;
+        }
+
+        .modal-close {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            background: #f1f5f9;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            color: #64748b;
+        }
+
+        .form-group {
+            margin-bottom: 16px;
+        }
+
+        .form-label {
+            display: block;
+            font-size: 14px;
+            font-weight: 600;
+            color: #374151;
+            margin-bottom: 6px;
+        }
+
+        .form-input {
+            width: 100%;
+            padding: 12px 16px;
+            border: 2px solid #e2e8f0;
+            border-radius: 12px;
+            font-size: 16px;
+            background: #f8fafc;
+            transition: all 0.3s ease;
+        }
+
+        .form-input:focus {
+            outline: none;
+            border-color: #3b82f6;
+            background: white;
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+            transform: translateY(-1px);
+        }
+
+        .form-input:not(:placeholder-shown) {
+            border-color: #10b981;
+            background: #f0fdf4;
+        }
+
+        .form-input.error {
+            border-color: #ef4444;
+            background: #fef2f2;
+        }
+
+        .form-error {
+            color: #ef4444;
+            font-size: 12px;
+            margin-top: 4px;
+            display: none;
+        }
+
+        .form-error.show {
+            display: block;
+        }
+
+        .notification {
+            position: fixed;
+            top: 60px;
+            left: 20px;
+            right: 20px;
+            padding: 16px;
+            border-radius: 12px;
+            color: white;
+            font-weight: 600;
+            z-index: 3000;
+            animation: notificationSlide 0.3s ease-out;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            cursor: pointer;
+        }
+
+        .notification:hover {
+            transform: scale(1.02);
+        }
+
+        .notification:active {
+            transform: scale(0.98);
+        }
+
+        .notification.success {
+            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+        }
+
+        .notification.error {
+            background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+        }
+
+        .notification.warning {
+            background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+        }
+
+        @keyframes notificationSlide {
+            from {
+                opacity: 0;
+                transform: translateY(-100%);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .search-bar {
+            position: relative;
+            margin-bottom: 16px;
+        }
+
+        .search-input {
+            width: 100%;
+            padding: 12px 16px 12px 48px;
+            border: 2px solid #e2e8f0;
+            border-radius: 12px;
+            font-size: 16px;
+            background: white;
+        }
+
+        .search-icon {
+            position: absolute;
+            left: 16px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #64748b;
+        }
+
+        .empty-state {
+            text-align: center;
+            padding: 40px 20px;
+            color: #64748b;
+        }
+
+        .empty-state i {
+            font-size: 48px;
+            margin-bottom: 16px;
+            opacity: 0.5;
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 6px;
+            background: #e2e8f0;
+            border-radius: 3px;
+            overflow: hidden;
+            margin-top: 8px;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #10b981 0%, #059669 100%);
+            transition: width 0.3s ease;
+        }
+
+        .loan-card {
+            background: white;
+            border-radius: 16px;
+            padding: 20px;
+            margin-bottom: 16px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+            border: 1px solid #f1f5f9;
+        }
+
+        .loan-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 12px;
+        }
+
+        .loan-client {
+            font-weight: 600;
+            color: #1e293b;
+        }
+
+        .loan-id {
+            font-size: 12px;
+            color: #64748b;
+            background: #f1f5f9;
+            padding: 4px 8px;
+            border-radius: 6px;
+        }
+
+        .loan-details {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+            margin-bottom: 12px;
+        }
+
+        .loan-detail {
+            text-align: center;
+        }
+
+        .loan-detail-label {
+            font-size: 11px;
+            color: #64748b;
+            text-transform: uppercase;
+            font-weight: 600;
+            margin-bottom: 2px;
+        }
+
+        .loan-detail-value {
+            font-size: 14px;
+            font-weight: 600;
+            color: #1e293b;
+        }
+
+        .action-buttons {
+            display: flex;
+            gap: 8px;
+            margin-top: 12px;
+        }
+
+        .filter-tabs {
+            display: flex;
+            background: #f1f5f9;
+            border-radius: 12px;
+            padding: 4px;
+            margin-bottom: 16px;
+        }
+
+        .filter-tab {
+            flex: 1;
+            padding: 8px 12px;
+            text-align: center;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 600;
+            color: #64748b;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .filter-tab.active {
+            background: white;
+            color: #3b82f6;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .summary-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 12px;
+            margin-bottom: 20px;
+        }
+
+        .summary-item {
+            background: white;
+            padding: 16px;
+            border-radius: 12px;
+            text-align: center;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+        }
+
+        .summary-value {
+            font-size: 18px;
+            font-weight: 700;
+            color: #1e293b;
+            margin-bottom: 4px;
+        }
+
+        .summary-label {
+            font-size: 11px;
+            color: #64748b;
+            text-transform: uppercase;
+            font-weight: 600;
+        }
+
+        .quick-actions {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+            margin-bottom: 20px;
+        }
+
+        .quick-action {
+            background: white;
+            padding: 16px;
+            border-radius: 12px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+        }
+
+        .quick-action:active {
+            transform: scale(0.98);
+        }
+
+        .quick-action i {
+            font-size: 24px;
+            margin-bottom: 8px;
+            color: #3b82f6;
+        }
+
+        .quick-action span {
+            display: block;
+            font-size: 12px;
+            font-weight: 600;
+            color: #374151;
+        }
+
+        .settings-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 16px;
+            background: white;
+            border-radius: 12px;
+            margin-bottom: 12px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+            cursor: pointer;
+        }
+
+        .settings-item:active {
+            background: #f8fafc;
+        }
+
+        .settings-item-content {
+            display: flex;
+            align-items: center;
+        }
+
+        .settings-item-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 12px;
+            background: #eff6ff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #3b82f6;
+            margin-right: 12px;
+        }
+
+        .settings-item-text {
+            flex: 1;
+        }
+
+        .settings-item-title {
+            font-weight: 600;
+            color: #1e293b;
+            margin-bottom: 2px;
+        }
+
+        .settings-item-subtitle {
+            font-size: 12px;
+            color: #64748b;
+        }
+
+        @media (max-width: 390px) {
+            .kpi-value {
+                font-size: 18px;
+            }
+            
+            .section {
+                padding: 16px;
+            }
+        }
+
+        /* Skeleton loading states */
+        .skeleton {
+            background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+            background-size: 200% 100%;
+            animation: loading 1.5s infinite;
+            border-radius: 8px;
+        }
+
+        @keyframes loading {
+            0% {
+                background-position: 200% 0;
+            }
+            100% {
+                background-position: -200% 0;
+            }
+        }
+
+        .skeleton-card {
+            height: 100px;
+            margin-bottom: 16px;
+        }
+
+        .skeleton-text {
+            height: 16px;
+            margin-bottom: 8px;
+        }
+
+        .skeleton-text.short {
+            width: 60%;
+        }
+
+        /* Pull to refresh */
+        .pull-to-refresh {
+            position: absolute;
+            top: -60px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 40px;
+            height: 40px;
+            background: #3b82f6;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            transition: all 0.3s ease;
+            opacity: 0;
+        }
+
+        .pull-to-refresh.visible {
+            opacity: 1;
+            top: 10px;
+        }
+
+        .pull-to-refresh.loading {
+            animation: spin 1s linear infinite;
+        }
+
+        /* Improved scrollbars */
+        .content-area::-webkit-scrollbar {
+            width: 3px;
+        }
+
+        .content-area::-webkit-scrollbar-track {
+            background: transparent;
+        }
+
+        .content-area::-webkit-scrollbar-thumb {
+            background: rgba(59, 130, 246, 0.3);
+            border-radius: 3px;
+        }
+
+        .content-area::-webkit-scrollbar-thumb:hover {
+            background: rgba(59, 130, 246, 0.5);
+        }
+
+        /* Progressive enhancement */
+        .enhanced-card {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .enhanced-card::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: left 0.5s;
+        }
+
+        .enhanced-card:hover::after {
+            left: 100%;
+        }
+
+        /* Haptic feedback simulation */
+        .haptic {
+            animation: hapticFeedback 0.1s ease-out;
+        }
+
+        @keyframes hapticFeedback {
+            0% { transform: scale(1); }
+            50% { transform: scale(0.98); }
+            100% { transform: scale(1); }
+        }
+
+        /* Contextual help */
+        .help-tooltip {
+            position: relative;
+            display: inline-block;
+            cursor: help;
+        }
+
+        .help-tooltip .tooltip-content {
+            visibility: hidden;
+            width: 200px;
+            background: #333;
+            color: white;
+            text-align: center;
+            border-radius: 8px;
+            padding: 8px;
+            position: absolute;
+            z-index: 1000;
+            bottom: 125%;
+            left: 50%;
+            margin-left: -100px;
+            opacity: 0;
+            transition: opacity 0.3s;
+            font-size: 12px;
+        }
+
+        .help-tooltip:hover .tooltip-content {
+            visibility: visible;
+            opacity: 1;
+        }
+
+        /* Smart suggestions */
+        .suggestion-chip {
+            display: inline-block;
+            background: #eff6ff;
+            color: #3b82f6;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            margin: 2px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            border: 1px solid #e0f2fe;
+        }
+
+        .suggestion-chip:hover {
+            background: #3b82f6;
+            color: white;
+            transform: translateY(-1px);
+        }
+
+        /* Emotional feedback */
+        .success-pulse {
+            animation: successPulse 0.6s ease-out;
+        }
+
+        @keyframes successPulse {
+            0% { 
+                background-color: #10b981;
+                transform: scale(1);
+            }
+            50% { 
+                background-color: #059669;
+                transform: scale(1.05);
+            }
+            100% { 
+                background-color: #10b981;
+                transform: scale(1);
+            }
+        }
+
+        /* Search enhancements */
+        .search-suggestions {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            right: 0;
+            background: white;
+            border: 1px solid #e2e8f0;
+            border-radius: 0 0 12px 12px;
+            max-height: 200px;
+            overflow-y: auto;
+            z-index: 100;
+            display: none;
+        }
+
+        .search-suggestions.show {
+            display: block;
+        }
+
+        .search-suggestion-item {
+            padding: 12px 16px;
+            cursor: pointer;
+            border-bottom: 1px solid #f1f5f9;
+            transition: background 0.2s ease;
+        }
+
+        .search-suggestion-item:hover {
+            background: #f8fafc;
+        }
+
+        .search-suggestion-item:last-child {
+            border-bottom: none;
+        }
+
+        .loading {
+            display: inline-block;
+            width: 16px;
+            height: 16px;
+            border: 2px solid rgba(255,255,255,0.3);
+            border-top: 2px solid white;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .payment-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 16px;
+            background: white;
+            border-radius: 12px;
+            margin-bottom: 12px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+        }
+
+        .payment-info {
+            flex: 1;
+        }
+
+        .payment-name {
+            font-weight: 600;
+            color: #1e293b;
+            margin-bottom: 4px;
+        }
+
+        .payment-details {
+            font-size: 12px;
+            color: #64748b;
+        }
+
+        .payment-amount {
+            text-align: right;
+        }
+
+        .payment-value {
+            font-weight: 700;
+            font-size: 16px;
+            color: #059669;
+            margin-bottom: 4px;
+        }
+
+        .payment-date {
+            font-size: 11px;
+            color: #64748b;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+            margin-bottom: 20px;
+        }
+
+        .stat-card {
+            background: white;
+            padding: 20px;
+            border-radius: 16px;
+            text-align: center;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+        }
+
+        .stat-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 12px;
+            margin: 0 auto 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+        }
+
+        .stat-icon.blue {
+            background: #eff6ff;
+            color: #3b82f6;
+        }
+
+        .stat-icon.green {
+            background: #f0fdf4;
+            color: #10b981;
+        }
+
+        .stat-icon.purple {
+            background: #faf5ff;
+            color: #8b5cf6;
+        }
+
+        .stat-icon.orange {
+            background: #fff7ed;
+            color: #f59e0b;
+        }
+
+        .stat-value {
+            font-size: 20px;
+            font-weight: 800;
+            color: #1e293b;
+            margin-bottom: 4px;
+        }
+
+        .stat-label {
+            font-size: 12px;
+            color: #64748b;
+            font-weight: 600;
+        }
+    </style>
+</head>
+<body>
+    <div class="app-container">
+        <!-- Status Bar -->
+        <div class="status-bar">
+            <div class="flex items-center gap-2">
+                <i class="fas fa-chart-line"></i>
+                <span>SGA Finance</span>
+            </div>
+            <div id="current-time"></div>
+        </div>
+
+        <!-- Content Area -->
+        <div class="content-area">
+            <!-- Dashboard Section -->
+            <div id="dashboard-section" class="section active">
+                <div class="flex items-center justify-between mb-6">
+                    <div>
+                        <h1 class="text-2xl font-bold text-gray-800">Olá, João! 👋</h1>
+                        <p class="text-sm text-gray-600" id="dashboard-date"></p>
+                    </div>
+                    <div class="w-12 h-12 bg-gradient-to-br from-blue-500 to-purple-600 rounded-full flex items-center justify-center">
+                        <span class="text-white font-bold">JS</span>
+                    </div>
+                </div>
+
+                <!-- KPI Cards -->
+                <div class="kpi-grid">
+                    <div class="kpi-card">
+                        <div class="kpi-label">Dinheiro na Rua</div>
+                        <div class="kpi-value" id="kpi-money-street">R$ 0</div>
+                        <div class="kpi-change">
+                            <i class="fas fa-arrow-up"></i>
+                            <span id="kpi-money-growth">0%</span>
+                        </div>
+                    </div>
+                    <div class="kpi-card green">
+                        <div class="kpi-label">A Receber</div>
+                        <div class="kpi-value" id="kpi-receivable">R$ 0</div>
+                        <div class="kpi-change">
+                            <i class="fas fa-chart-line"></i>
+                            <span id="kpi-receivable-count">0 pendentes</span>
+                        </div>
+                    </div>
+                    <div class="kpi-card purple">
+                        <div class="kpi-label">Lucro Potencial</div>
+                        <div class="kpi-value" id="kpi-profit">R$ 0</div>
+                        <div class="kpi-change">
+                            <i class="fas fa-percentage"></i>
+                            <span id="kpi-margin">0% margem</span>
+                        </div>
+                    </div>
+                    <div class="kpi-card orange">
+                        <div class="kpi-label">Recebido Hoje</div>
+                        <div class="kpi-value" id="kpi-today">R$ 0</div>
+                        <div class="kpi-change">
+                            <i class="fas fa-calendar-day"></i>
+                            <span id="today-count">0 pagamentos</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Quick Actions -->
+                <div class="quick-actions">
+                    <div class="quick-action" onclick="showModal('new-client')">
+                        <i class="fas fa-user-plus"></i>
+                        <span>Novo Cliente</span>
+                    </div>
+                    <div class="quick-action" onclick="showModal('new-loan')">
+                        <i class="fas fa-hand-holding-usd"></i>
+                        <span>Novo Empréstimo</span>
+                    </div>
+                    <div class="quick-action" onclick="showModal('register-payment')">
+                        <i class="fas fa-money-bill"></i>
+                        <span>Registrar Pagamento</span>
+                    </div>
+                    <div class="quick-action" onclick="showSection('payments')">
+                        <i class="fas fa-calendar-check"></i>
+                        <span>Ver Agenda</span>
+                    </div>
+                </div>
+
+                <!-- Today's Agenda -->
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title">Agenda de Hoje</h3>
+                        <button class="btn-secondary" onclick="refreshAgenda()">
+                            <i class="fas fa-refresh"></i>
+                        </button>
+                    </div>
+                    <div id="today-agenda">
+                        <div class="empty-state">
+                            <i class="fas fa-calendar-check"></i>
+                            <p>Nenhum pagamento para hoje</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Client Status Summary -->
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-icon green">
+                            <i class="fas fa-check-circle"></i>
+                        </div>
+                        <div class="stat-value" id="clients-ok">0</div>
+                        <div class="stat-label">Em Dia</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon orange">
+                            <i class="fas fa-exclamation-triangle"></i>
+                        </div>
+                        <div class="stat-value" id="clients-late">0</div>
+                        <div class="stat-label">Em Atraso</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Clients Section -->
+            <div id="clients-section" class="section">
+                <div class="flex items-center justify-between mb-6">
+                    <h2 class="text-2xl font-bold text-gray-800">Clientes</h2>
+                    <div class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full">
+                        <span id="total-clients">0</span> clientes
+                    </div>
+                </div>
+
+                <!-- Search Bar -->
+                <div class="search-bar">
+                    <i class="fas fa-search search-icon"></i>
+                    <input type="text" class="search-input" placeholder="Buscar por nome ou CPF..." id="client-search">
+                    <div class="search-suggestions" id="search-suggestions">
+                        <!-- Dynamic suggestions will appear here -->
+                    </div>
+                </div>
+
+                <!-- Filter Tabs -->
+                <div class="filter-tabs">
+                    <div class="filter-tab active" data-filter="all">Todos</div>
+                    <div class="filter-tab" data-filter="Em Dia">Em Dia</div>
+                    <div class="filter-tab" data-filter="Em Atraso">Atraso</div>
+                    <div class="filter-tab" data-filter="Novo">Novos</div>
+                </div>
+
+                <!-- Clients List -->
+                <div id="clients-list">
+                    <div class="empty-state">
+                        <i class="fas fa-users"></i>
+                        <p>Nenhum cliente cadastrado</p>
+                        <button class="btn-primary mt-4" onclick="showModal('new-client')">
+                            Cadastrar Primeiro Cliente
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Loans Section -->
+            <div id="loans-section" class="section">
+                <div class="flex items-center justify-between mb-6">
+                    <h2 class="text-2xl font-bold text-gray-800">Empréstimos</h2>
+                    <div class="bg-green-100 text-green-800 px-3 py-1 rounded-full">
+                        <span id="total-loans">0</span> ativos
+                    </div>
+                </div>
+
+                <!-- Summary Cards -->
+                <div class="summary-grid">
+                    <div class="summary-item">
+                        <div class="summary-value" id="loans-active">0</div>
+                        <div class="summary-label">Ativos</div>
+                    </div>
+                    <div class="summary-item">
+                        <div class="summary-value" id="loans-total-value">R$ 0</div>
+                        <div class="summary-label">Emprestado</div>
+                    </div>
+                    <div class="summary-item">
+                        <div class="summary-value" id="loans-avg-rate">0%</div>
+                        <div class="summary-label">Taxa Média</div>
+                    </div>
+                </div>
+
+                <!-- Loans List -->
+                <div id="loans-list">
+                    <div class="empty-state">
+                        <i class="fas fa-hand-holding-usd"></i>
+                        <p>Nenhum empréstimo cadastrado</p>
+                        <button class="btn-primary mt-4" onclick="showModal('new-loan')">
+                            Criar Primeiro Empréstimo
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Payments Section -->
+            <div id="payments-section" class="section">
+                <div class="flex items-center justify-between mb-6">
+                    <h2 class="text-2xl font-bold text-gray-800">Recebimentos</h2>
+                    <button class="btn-secondary" onclick="showModal('register-payment')">
+                        <i class="fas fa-plus"></i>
+                    </button>
+                </div>
+
+                <!-- Filter Tabs -->
+                <div class="filter-tabs">
+                    <div class="filter-tab active" data-period="today">Hoje</div>
+                    <div class="filter-tab" data-period="week">Semana</div>
+                    <div class="filter-tab" data-period="month">Mês</div>
+                    <div class="filter-tab" data-period="all">Todos</div>
+                </div>
+
+                <!-- Summary -->
+                <div class="card">
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <p class="text-sm text-gray-600">Total a Receber</p>
+                            <p class="text-2xl font-bold text-green-600" id="payments-total">R$ 0,00</p>
+                        </div>
+                        <div class="text-right">
+                            <p class="text-sm text-gray-600">Pagamentos</p>
+                            <p class="text-xl font-bold text-blue-600" id="payments-count">0</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Payments List -->
+                <div id="payments-list">
+                    <div class="empty-state">
+                        <i class="fas fa-calendar-times"></i>
+                        <p>Nenhum pagamento encontrado</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Settings Section -->
+            <div id="settings-section" class="section">
+                <div class="flex items-center justify-between mb-6">
+                    <h2 class="text-2xl font-bold text-gray-800">Configurações</h2>
+                </div>
+
+                <!-- Settings Items -->
+                <div class="settings-item" onclick="showModal('business-settings')">
+                    <div class="settings-item-content">
+                        <div class="settings-item-icon">
+                            <i class="fas fa-building"></i>
+                        </div>
+                        <div class="settings-item-text">
+                            <div class="settings-item-title">Dados do Negócio</div>
+                            <div class="settings-item-subtitle">Nome, configurações gerais</div>
+                        </div>
+                    </div>
+                    <i class="fas fa-chevron-right text-gray-400"></i>
+                </div>
+
+                <div class="settings-item" onclick="showModal('loan-types')">
+                    <div class="settings-item-content">
+                        <div class="settings-item-icon">
+                            <i class="fas fa-percentage"></i>
+                        </div>
+                        <div class="settings-item-text">
+                            <div class="settings-item-title">Tipos de Empréstimo</div>
+                            <div class="settings-item-subtitle">Gerenciar taxas e tipos</div>
+                        </div>
+                    </div>
+                    <i class="fas fa-chevron-right text-gray-400"></i>
+                </div>
+
+                <div class="settings-item" onclick="exportData()">
+                    <div class="settings-item-content">
+                        <div class="settings-item-icon">
+                            <i class="fas fa-download"></i>
+                        </div>
+                        <div class="settings-item-text">
+                            <div class="settings-item-title">Exportar Dados</div>
+                            <div class="settings-item-subtitle">Fazer backup dos dados</div>
+                        </div>
+                    </div>
+                    <i class="fas fa-chevron-right text-gray-400"></i>
+                </div>
+
+                <div class="settings-item" onclick="document.getElementById('import-file').click()">
+                    <div class="settings-item-content">
+                        <div class="settings-item-icon">
+                            <i class="fas fa-upload"></i>
+                        </div>
+                        <div class="settings-item-text">
+                            <div class="settings-item-title">Importar Dados</div>
+                            <div class="settings-item-subtitle">Restaurar backup</div>
+                        </div>
+                    </div>
+                    <i class="fas fa-chevron-right text-gray-400"></i>
+                </div>
+                <input type="file" id="import-file" accept=".json" style="display: none;" onchange="importData(event)">
+
+                <!-- Stats -->
+                <div class="card">
+                    <h3 class="card-title">Estatísticas do Sistema</h3>
+                    <div class="space-y-3">
+                        <div class="flex justify-between">
+                            <span class="text-gray-600">Total de Clientes</span>
+                            <span class="font-semibold" id="stats-clients">0</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span class="text-gray-600">Total de Empréstimos</span>
+                            <span class="font-semibold" id="stats-loans">0</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span class="text-gray-600">Total de Pagamentos</span>
+                            <span class="font-semibold" id="stats-payments">0</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span class="text-gray-600">Armazenamento</span>
+                            <span class="font-semibold">LocalStorage</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Danger Zone -->
+                <div class="card mt-6">
+                    <h3 class="card-title text-red-600">Zona de Perigo</h3>
+                    <p class="text-sm text-gray-600 mb-4">Ações irreversíveis</p>
+                    <button class="btn-secondary w-full text-red-600" onclick="confirmClearData()">
+                        <i class="fas fa-trash mr-2"></i>
+                        Limpar Todos os Dados
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Bottom Navigation -->
+        <div class="bottom-nav">
+            <div class="nav-item active" data-section="dashboard">
+                <i class="fas fa-home"></i>
+                <span>Home</span>
+            </div>
+            <div class="nav-item" data-section="clients">
+                <i class="fas fa-users"></i>
+                <span>Clientes</span>
+            </div>
+            <div class="nav-item" data-section="loans">
+                <i class="fas fa-hand-holding-usd"></i>
+                <span>Empréstimos</span>
+            </div>
+            <div class="nav-item" data-section="payments">
+                <i class="fas fa-calendar-check"></i>
+                <span>Agenda</span>
+            </div>
+            <div class="nav-item" data-section="settings">
+                <i class="fas fa-cog"></i>
+                <span>Config</span>
+            </div>
+        </div>
+
+        <!-- Floating Action Button -->
+        <div class="fab" onclick="showQuickActions()">
+            <i class="fas fa-plus"></i>
+        </div>
+    </div>
+
+    <!-- Modals -->
+    <!-- New Client Modal -->
+    <div id="new-client-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title">Novo Cliente</h3>
+                <div class="modal-close" onclick="hideModal('new-client')">
+                    <i class="fas fa-times"></i>
+                </div>
+            </div>
+            <form id="new-client-form">
+                <div class="form-group">
+                    <label class="form-label">
+                        Nome Completo *
+                        <span class="help-tooltip">
+                            <i class="fas fa-question-circle text-gray-400 ml-1"></i>
+                            <span class="tooltip-content">Digite o nome completo do cliente para facilitar a identificação</span>
+                        </span>
+                    </label>
+                    <input type="text" name="name" class="form-input" placeholder="Ex: João Silva Santos" required>
+                    <div class="form-error"></div>
+                    <div class="mt-2" id="name-suggestions"></div>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Telefone/WhatsApp *</label>
+                    <input type="tel" name="phone" class="form-input" placeholder="(00) 00000-0000" required>
+                    <div class="form-error"></div>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">CPF</label>
+                    <input type="text" name="cpf" class="form-input" placeholder="000.000.000-00" maxlength="14">
+                    <div class="form-error"></div>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Profissão</label>
+                    <input type="text" name="profession" class="form-input" placeholder="Onde trabalha">
+                    <div class="form-error"></div>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Endereço</label>
+                    <textarea name="address" class="form-input" placeholder="Endereço completo" rows="3"></textarea>
+                </div>
+                <button type="submit" class="btn-primary">
+                    <span class="button-text">Cadastrar Cliente</span>
+                    <div class="loading" style="display: none;"></div>
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- New Loan Modal -->
+    <div id="new-loan-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title">Novo Empréstimo</h3>
+                <div class="modal-close" onclick="hideModal('new-loan')">
+                    <i class="fas fa-times"></i>
+                </div>
+            </div>
+            <form id="new-loan-form">
+                <div class="form-group">
+                    <label class="form-label">Cliente *</label>
+                    <select name="clientId" class="form-input" required>
+                        <option value="">Selecione um cliente</option>
+                    </select>
+                    <div class="form-error"></div>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Valor Principal *</label>
+                    <input type="number" name="principal" class="form-input" placeholder="0,00" step="0.01" min="1" required>
+                    <div class="form-error"></div>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Taxa (%)</label>
+                    <input type="number" name="interestRate" class="form-input" placeholder="20" step="0.1" min="0" value="20">
+                    <div class="form-error"></div>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Número de Parcelas *</label>
+                    <input type="number" name="installments" class="form-input" placeholder="12" min="1" max="60" required>
+                    <div class="form-error"></div>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Periodicidade</label>
+                    <select name="frequency" class="form-input">
+                        <option value="monthly">Mensal</option>
+                        <option value="biweekly">Quinzenal</option>
+                        <option value="weekly">Semanal</option>
+                        <option value="daily">Diário</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Data do Primeiro Vencimento *</label>
+                    <input type="date" name="firstDueDate" class="form-input" required>
+                    <div class="form-error"></div>
+                </div>
+                <div id="loan-preview" style="display: none;" class="bg-blue-50 p-4 rounded-lg mb-4">
+                    <h4 class="font-semibold mb-2 text-blue-800">Resumo do Empréstimo</h4>
+                    <div class="text-sm space-y-1">
+                        <div class="flex justify-between">
+                            <span>Valor por Parcela:</span>
+                            <span id="preview-installment" class="font-semibold"></span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span>Total a Receber:</span>
+                            <span id="preview-total" class="font-semibold"></span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span>Lucro Total:</span>
+                            <span id="preview-profit" class="font-semibold text-green-600"></span>
+                        </div>
+                    </div>
+                </div>
+                <button type="submit" class="btn-primary">
+                    <span class="button-text">Criar Empréstimo</span>
+                    <div class="loading" style="display: none;"></div>
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Register Payment Modal -->
+    <div id="register-payment-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title">Registrar Pagamento</h3>
+                <div class="modal-close" onclick="hideModal('register-payment')">
+                    <i class="fas fa-times"></i>
+                </div>
+            </div>
+            <form id="register-payment-form">
+                <div class="form-group">
+                    <label class="form-label">Empréstimo *</label>
+                    <select name="loanId" class="form-input" required>
+                        <option value="">Selecione um empréstimo</option>
+                    </select>
+                    <div class="form-error"></div>
+                </div>
+                <div id="payment-details" style="display: none;" class="bg-gray-50 p-4 rounded-lg mb-4">
+                    <h4 class="font-semibold mb-2">Detalhes</h4>
+                    <div class="text-sm space-y-1">
+                        <div class="flex justify-between">
+                            <span>Parcela:</span>
+                            <span id="payment-installment-info" class="font-semibold"></span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span>Valor:</span>
+                            <span id="payment-installment-value" class="font-semibold"></span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span>Vencimento:</span>
+                            <span id="payment-due-date" class="font-semibold"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Valor Pago *</label>
+                    <input type="number" name="amount" class="form-input" placeholder="0,00" step="0.01" min="0.01" required>
+                    <div class="form-error"></div>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Data do Pagamento *</label>
+                    <input type="date" name="paymentDate" class="form-input" required>
+                    <div class="form-error"></div>
+                </div>
+                <button type="submit" class="btn-primary">
+                    <span class="button-text">Registrar Pagamento</span>
+                    <div class="loading" style="display: none;"></div>
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Quick Actions Modal -->
+    <div id="quick-actions-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title">Ações Rápidas</h3>
+                <div class="modal-close" onclick="hideModal('quick-actions')">
+                    <i class="fas fa-times"></i>
+                </div>
+            </div>
+            <div class="space-y-3">
+                <button class="btn-primary" onclick="hideModal('quick-actions'); showModal('new-client')">
+                    <i class="fas fa-user-plus mr-2"></i>
+                    Novo Cliente
+                </button>
+                <button class="btn-primary" onclick="hideModal('quick-actions'); showModal('new-loan')">
+                    <i class="fas fa-hand-holding-usd mr-2"></i>
+                    Novo Empréstimo
+                </button>
+                <button class="btn-primary" onclick="hideModal('quick-actions'); showModal('register-payment')">
+                    <i class="fas fa-money-bill mr-2"></i>
+                    Registrar Pagamento
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Client Details Modal -->
+    <div id="client-details-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title">Detalhes do Cliente</h3>
+                <div class="modal-close" onclick="hideModal('client-details')">
+                    <i class="fas fa-times"></i>
+                </div>
+            </div>
+            <div id="client-details-content"></div>
+        </div>
+    </div>
+
+    <!-- Business Settings Modal -->
+    <div id="business-settings-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title">Dados do Negócio</h3>
+                <div class="modal-close" onclick="hideModal('business-settings')">
+                    <i class="fas fa-times"></i>
+                </div>
+            </div>
+            <form id="business-settings-form">
+                <div class="form-group">
+                    <label class="form-label">Nome do Negócio</label>
+                    <input type="text" name="businessName" id="business-name-input" class="form-input" placeholder="Ex: João Silva - Crédito Fácil" value="João Silva - Crédito Fácil">
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Tema</label>
+                    <select name="theme" id="theme-input" class="form-input">
+                        <option value="light">Claro</option>
+                        <option value="dark">Escuro</option>
+                        <option value="auto">Automático</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Moeda</label>
+                    <select name="currency" id="currency-input" class="form-input">
+                        <option value="BRL">Real (R$)</option>
+                        <option value="USD">Dólar ($)</option>
+                        <option value="EUR">Euro (€)</option>
+                    </select>
+                </div>
+                <button type="submit" class="btn-primary">
+                    <span class="button-text">Salvar Configurações</span>
+                    <div class="loading" style="display: none;"></div>
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Loan Types Modal -->
+    <div id="loan-types-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title">Tipos de Empréstimo</h3>
+                <div class="modal-close" onclick="hideModal('loan-types')">
+                    <i class="fas fa-times"></i>
+                </div>
+            </div>
+            <div id="loan-types-list" class="space-y-3 mb-4">
+                <!-- Loan types will be loaded here -->
+            </div>
+            <button class="btn-primary" onclick="showModal('new-loan-type')">
+                <i class="fas fa-plus mr-2"></i>
+                Adicionar Novo Tipo
+            </button>
+        </div>
+    </div>
+
+    <!-- New Loan Type Modal -->
+    <div id="new-loan-type-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title">Novo Tipo de Empréstimo</h3>
+                <div class="modal-close" onclick="hideModal('new-loan-type')">
+                    <i class="fas fa-times"></i>
+                </div>
+            </div>
+            <form id="new-loan-type-form">
+                <div class="form-group">
+                    <label class="form-label">Nome do Tipo *</label>
+                    <input type="text" name="name" class="form-input" placeholder="Ex: Padrão 20%" required>
+                    <div class="form-error"></div>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Tipo de Taxa</label>
+                    <select name="type" class="form-input" required>
+                        <option value="percentage">Percentual (%)</option>
+                        <option value="fixed">Valor Fixo (R$)</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Valor *</label>
+                    <input type="number" name="value" class="form-input" placeholder="20" step="0.01" min="0" required>
+                    <div class="form-error"></div>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Descrição</label>
+                    <textarea name="description" class="form-input" placeholder="Descrição do tipo de empréstimo" rows="2"></textarea>
+                </div>
+                <button type="submit" class="btn-primary">
+                    <span class="button-text">Criar Tipo</span>
+                    <div class="loading" style="display: none;"></div>
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- PWA Install Prompt -->
+    <div id="install-prompt" class="install-prompt">
+        <div class="install-prompt-icon">
+            <i class="fas fa-mobile-alt"></i>
+        </div>
+        <div class="install-prompt-content">
+            <div class="install-prompt-title">Instalar SGA Finance</div>
+            <div class="install-prompt-subtitle">Acesso rápido direto na tela inicial</div>
+        </div>
+        <div class="install-prompt-actions">
+            <button class="install-btn" onclick="hideInstallPrompt()">Agora não</button>
+            <button class="install-btn primary" onclick="installPWA()">Instalar</button>
+        </div>
+    </div>
+
+    <!-- Offline Indicator -->
+    <div id="offline-indicator" class="offline-indicator">
+        <i class="fas fa-wifi mr-2"></i>
+        Você está offline - Os dados serão sincronizados quando voltar online
+    </div>
+
+    <!-- Update Available Prompt -->
+    <div id="update-prompt" class="update-prompt">
+        <span>
+            <i class="fas fa-download mr-2"></i>
+            Nova versão disponível
+        </span>
+        <button class="update-btn" onclick="updateApp()">Atualizar</button>
+    </div>
+
+    <script>
+        // Global variables
+        let clients = JSON.parse(localStorage.getItem('sga_clients') || '[]');
+        let loans = JSON.parse(localStorage.getItem('sga_loans') || '[]');
+        let payments = JSON.parse(localStorage.getItem('sga_payments') || '[]');
+        let loanTypes = JSON.parse(localStorage.getItem('sga_loan_types') || '[]');
+        let settings = JSON.parse(localStorage.getItem('sga_settings') || '{}');
+
+        // Initialize default loan types if empty
+        if (loanTypes.length === 0) {
+            loanTypes = [
+                { id: 1, name: 'Padrão 20%', type: 'percentage', value: 20, description: 'Taxa padrão de 20% ao mês' },
+                { id: 2, name: 'Taxa Fixa R$ 100', type: 'fixed', value: 100, description: 'Taxa fixa de R$ 100,00' }
+            ];
+            saveLoanTypes();
+        }
+
+        // Utility functions
+        function generateId() {
+            return Date.now() + Math.random().toString(36).substr(2, 9);
+        }
+
+        function formatCurrency(value) {
+            return new Intl.NumberFormat('pt-BR', {
+                style: 'currency',
+                currency: 'BRL',
+                minimumFractionDigits: 0,
+                maximumFractionDigits: 0
+            }).format(value);
+        }
+
+        function formatDate(date) {
+            return new Date(date).toLocaleDateString('pt-BR');
+        }
+
+        function formatCPF(cpf) {
+            return cpf.replace(/(\d{3})(\d{3})(\d{3})(\d{2})/, '$1.$2.$3-$4');
+        }
+
+        function formatPhone(phone) {
+            return phone.replace(/(\d{2})(\d{5})(\d{4})/, '($1) $2-$3');
+        }
+
+        function validateCPF(cpf) {
+            cpf = cpf.replace(/\D/g, '');
+            if (cpf.length !== 11) return false;
+            
+            if (/^(\d)\1{10}$/.test(cpf)) return false;
+            
+            let sum = 0;
+            for (let i = 0; i < 9; i++) {
+                sum += parseInt(cpf.charAt(i)) * (10 - i);
+            }
+            let remainder = 11 - (sum % 11);
+            if (remainder === 10 || remainder === 11) remainder = 0;
+            if (remainder !== parseInt(cpf.charAt(9))) return false;
+            
+            sum = 0;
+            for (let i = 0; i < 10; i++) {
+                sum += parseInt(cpf.charAt(i)) * (11 - i);
+            }
+            remainder = 11 - (sum % 11);
+            if (remainder === 10 || remainder === 11) remainder = 0;
+            if (remainder !== parseInt(cpf.charAt(10))) return false;
+            
+            return true;
+        }
+
+        function showNotification(message, type = 'success') {
+            // Remove existing notifications
+            document.querySelectorAll('.notification').forEach(n => n.remove());
+            
+            const notification = document.createElement('div');
+            notification.className = `notification ${type}`;
+            notification.innerHTML = `
+                <i class="fas fa-${type === 'success' ? 'check-circle' : type === 'error' ? 'exclamation-circle' : 'exclamation-triangle'} mr-2"></i>
+                ${message}
+                <i class="fas fa-times ml-2" style="opacity: 0.7; cursor: pointer;" onclick="this.parentElement.remove()"></i>
+            `;
+            document.body.appendChild(notification);
+
+            // Haptic feedback simulation
+            notification.classList.add('haptic');
+            
+            // Auto remove
+            const autoRemove = setTimeout(() => {
+                if (notification.parentElement) {
+                    notification.style.animation = 'notificationSlide 0.3s ease-out reverse';
+                    setTimeout(() => notification.remove(), 300);
+                }
+            }, 5000);
+
+            // Manual close
+            notification.addEventListener('click', () => {
+                clearTimeout(autoRemove);
+                notification.style.animation = 'notificationSlide 0.3s ease-out reverse';
+                setTimeout(() => notification.remove(), 300);
+            });
+        }
+
+        function showLoading(button) {
+            const text = button.querySelector('.button-text');
+            const loading = button.querySelector('.loading');
+            text.style.display = 'none';
+            loading.style.display = 'inline-block';
+            button.disabled = true;
+        }
+
+        function hideLoading(button) {
+            const text = button.querySelector('.button-text');
+            const loading = button.querySelector('.loading');
+            text.style.display = 'inline';
+            loading.style.display = 'none';
+            button.disabled = false;
+        }
+
+        function clearFormErrors(form) {
+            const errors = form.querySelectorAll('.form-error');
+            const fields = form.querySelectorAll('.form-input');
+            
+            errors.forEach(error => {
+                error.classList.remove('show');
+                error.textContent = '';
+            });
+            
+            fields.forEach(field => {
+                field.classList.remove('error');
+            });
+        }
+
+        function showFormError(field, message) {
+            field.classList.add('error');
+            const error = field.parentNode.querySelector('.form-error');
+            if (error) {
+                error.textContent = message;
+                error.classList.add('show');
+            }
+        }
+
+        // Storage functions
+        function saveClients() {
+            localStorage.setItem('sga_clients', JSON.stringify(clients));
+        }
+
+        function saveLoans() {
+            localStorage.setItem('sga_loans', JSON.stringify(loans));
+        }
+
+        function savePayments() {
+            localStorage.setItem('sga_payments', JSON.stringify(payments));
+        }
+
+        function saveLoanTypes() {
+            localStorage.setItem('sga_loan_types', JSON.stringify(loanTypes));
+        }
+
+        // Client functions
+        function addClient(clientData) {
+            const client = {
+                id: generateId(),
+                ...clientData,
+                createdAt: new Date().toISOString(),
+                status: 'Novo'
+            };
+            
+            clients.push(client);
+            saveClients();
+            updateDashboard();
+            updateClientsSection();
+            updateClientOptions();
+            
+            // Enhanced success feedback
+            showNotification(`✨ ${client.name} foi cadastrado com sucesso!`);
+            
+            // Add success pulse effect to relevant UI elements
+            setTimeout(() => {
+                const clientsTab = document.querySelector('[data-section="clients"]');
+                if (clientsTab) {
+                    clientsTab.classList.add('success-pulse');
+                    setTimeout(() => clientsTab.classList.remove('success-pulse'), 600);
+                }
+            }, 500);
+        }
+
+        function updateClientStatus(clientId) {
+            const client = clients.find(c => c.id === clientId);
+            if (!client) return;
+            
+            const clientLoans = loans.filter(l => l.clientId === clientId && l.status === 'active');
+            const clientPayments = payments.filter(p => clientLoans.some(l => l.id === p.loanId));
+            
+            if (clientLoans.length === 0) {
+                client.status = 'Novo';
+                return;
+            }
+            
+            const today = new Date();
+            let hasOverdue = false;
+            
+            clientLoans.forEach(loan => {
+                const installments = generateInstallments(loan);
+                installments.forEach(installment => {
+                    const installmentPayments = clientPayments.filter(p => 
+                        p.loanId === loan.id && p.installmentNumber === installment.number);
+                    const totalPaid = installmentPayments.reduce((sum, p) => sum + p.amount, 0);
+                    
+                    if (totalPaid < installment.amount && new Date(installment.dueDate) < today) {
+                        hasOverdue = true;
+                    }
+                });
+            });
+            
+            client.status = hasOverdue ? 'Em Atraso' : 'Em Dia';
+        }
+
+        function getClientTotalDebt(clientId) {
+            const clientLoans = loans.filter(l => l.clientId === clientId && l.status === 'active');
+            let totalDebt = 0;
+            
+            clientLoans.forEach(loan => {
+                const installments = generateInstallments(loan);
+                const loanPayments = payments.filter(p => p.loanId === loan.id);
+                
+                installments.forEach(installment => {
+                    const installmentPayments = loanPayments.filter(p => p.installmentNumber === installment.number);
+                    const totalPaid = installmentPayments.reduce((sum, p) => sum + p.amount, 0);
+                    totalDebt += Math.max(0, installment.amount - totalPaid);
+                });
+            });
+            
+            return totalDebt;
+        }
+
+        // Loan functions
+        function addLoan(loanData) {
+            const client = clients.find(c => c.id === loanData.clientId);
+            if (!client) {
+                showNotification('Cliente não encontrado!', 'error');
+                return;
+            }
+            
+            const loan = {
+                id: generateId(),
+                ...loanData,
+                principal: parseFloat(loanData.principal),
+                interestRate: parseFloat(loanData.interestRate || 0),
+                installments: parseInt(loanData.installments),
+                createdAt: new Date().toISOString(),
+                status: 'active'
+            };
+            
+            loans.push(loan);
+            saveLoans();
+            updateClientStatus(loanData.clientId);
+            saveClients();
+            updateDashboard();
+            updateLoansSection();
+            updateLoanOptions();
+            showNotification(`Empréstimo criado para ${client.name}!`);
+        }
+
+        function generateInstallments(loan) {
+            const installments = [];
+            const startDate = new Date(loan.firstDueDate);
+            
+            let installmentAmount;
+            if (loan.interestType === 'fixed') {
+                installmentAmount = (loan.principal + loan.interestRate) / loan.installments;
+            } else {
+                const totalWithInterest = loan.principal * (1 + loan.interestRate / 100);
+                installmentAmount = totalWithInterest / loan.installments;
+            }
+            
+            for (let i = 0; i < loan.installments; i++) {
+                const dueDate = new Date(startDate);
+                
+                switch (loan.frequency) {
+                    case 'weekly':
+                        dueDate.setDate(startDate.getDate() + (i * 7));
+                        break;
+                    case 'biweekly':
+                        dueDate.setDate(startDate.getDate() + (i * 14));
+                        break;
+                    case 'monthly':
+                        dueDate.setMonth(startDate.getMonth() + i);
+                        break;
+                    case 'daily':
+                        dueDate.setDate(startDate.getDate() + i);
+                        break;
+                }
+                
+                installments.push({
+                    number: i + 1,
+                    amount: installmentAmount,
+                    dueDate: dueDate.toISOString().split('T')[0],
+                    loanId: loan.id
+                });
+            }
+            
+            return installments;
+        }
+
+        function getLoanProgress(loanId) {
+            const loan = loans.find(l => l.id === loanId);
+            if (!loan) return { paid: 0, total: 0, percentage: 0 };
+            
+            const installments = generateInstallments(loan);
+            const loanPayments = payments.filter(p => p.loanId === loanId);
+            
+            const totalAmount = installments.reduce((sum, inst) => sum + inst.amount, 0);
+            const paidAmount = loanPayments.reduce((sum, payment) => sum + payment.amount, 0);
+            
+            return {
+                paid: paidAmount,
+                total: totalAmount,
+                percentage: totalAmount > 0 ? (paidAmount / totalAmount) * 100 : 0
+            };
+        }
+
+        function getNextInstallment(loanId) {
+            const loan = loans.find(l => l.id === loanId);
+            if (!loan) return null;
+            
+            const installments = generateInstallments(loan);
+            const loanPayments = payments.filter(p => p.loanId === loanId);
+            
+            for (const installment of installments) {
+                const installmentPayments = loanPayments.filter(p => p.installmentNumber === installment.number);
+                const totalPaid = installmentPayments.reduce((sum, p) => sum + p.amount, 0);
+                
+                if (totalPaid < installment.amount) {
+                    return {
+                        ...installment,
+                        remainingAmount: installment.amount - totalPaid
+                    };
+                }
+            }
+            
+            return null;
+        }
+
+        // Payment functions
+        function addPayment(paymentData) {
+            const loan = loans.find(l => l.id === paymentData.loanId);
+            if (!loan) {
+                showNotification('Empréstimo não encontrado!', 'error');
+                return;
+            }
+            
+            const client = clients.find(c => c.id === loan.clientId);
+            
+            const payment = {
+                id: generateId(),
+                ...paymentData,
+                amount: parseFloat(paymentData.amount),
+                createdAt: new Date().toISOString()
+            };
+            
+            payments.push(payment);
+            savePayments();
+            updateClientStatus(loan.clientId);
+            saveClients();
+            updateDashboard();
+            updatePaymentsSection();
+            showNotification(`Pagamento registrado para ${client.name}!`);
+        }
+
+        // Navigation
+        function showSection(sectionName) {
+            // Hide all sections
+            document.querySelectorAll('.section').forEach(section => {
+                section.classList.remove('active');
+            });
+            
+            // Show selected section
+            document.getElementById(`${sectionName}-section`).classList.add('active');
+            
+            // Update nav
+            document.querySelectorAll('.nav-item').forEach(item => {
+                item.classList.remove('active');
+            });
+            document.querySelector(`[data-section="${sectionName}"]`).classList.add('active');
+            
+            // Update section data
+            switch (sectionName) {
+                case 'dashboard':
+                    updateDashboard();
+                    break;
+                case 'clients':
+                    updateClientsSection();
+                    break;
+                case 'loans':
+                    updateLoansSection();
+                    break;
+                case 'payments':
+                    updatePaymentsSection();
+                    break;
+                case 'settings':
+                    updateSettingsSection();
+                    break;
+            }
+        }
+
+        // Modal functions
+        function showModal(modalId) {
+            const modal = document.getElementById(`${modalId}-modal`);
+            if (modal) {
+                modal.classList.add('active');
+                
+                // Load specific modal data
+                if (modalId === 'business-settings') {
+                    loadBusinessSettings();
+                }
+                
+                if (modalId === 'loan-types') {
+                    loadLoanTypesModal();
+                }
+                
+                // Auto-focus first input
+                const firstInput = modal.querySelector('input, select, textarea');
+                if (firstInput) {
+                    setTimeout(() => firstInput.focus(), 100);
+                }
+                
+                // Set default dates
+                if (modalId === 'register-payment') {
+                    const dateInput = modal.querySelector('input[name="paymentDate"]');
+                    if (dateInput && !dateInput.value) {
+                        dateInput.value = new Date().toISOString().split('T')[0];
+                    }
+                }
+                
+                if (modalId === 'new-loan') {
+                    const dateInput = modal.querySelector('input[name="firstDueDate"]');
+                    if (dateInput && !dateInput.value) {
+                        const tomorrow = new Date();
+                        tomorrow.setDate(tomorrow.getDate() + 1);
+                        dateInput.value = tomorrow.toISOString().split('T')[0];
+                    }
+                }
+            }
+        }
+
+        function hideModal(modalId) {
+            const modal = document.getElementById(`${modalId}-modal`);
+            if (modal) {
+                modal.classList.remove('active');
+                
+                // Clear form if exists
+                const form = modal.querySelector('form');
+                if (form) {
+                    form.reset();
+                    clearFormErrors(form);
+                }
+                
+                // Hide preview sections
+                const preview = modal.querySelector('#loan-preview');
+                if (preview) preview.style.display = 'none';
+                
+                const paymentDetails = modal.querySelector('#payment-details');
+                if (paymentDetails) paymentDetails.style.display = 'none';
+            }
+        }
+
+        function showQuickActions() {
+            showModal('quick-actions');
+        }
+
+        // Update functions
+        function updateDashboard() {
+            updateKPIs();
+            updateTodayAgenda();
+            updateClientStats();
+        }
+
+        function updateKPIs() {
+            const activeLoans = loans.filter(l => l.status === 'active');
+            
+            // Money on the street
+            const moneyStreet = activeLoans.reduce((sum, loan) => {
+                const progress = getLoanProgress(loan.id);
+                return sum + Math.max(0, loan.principal - (progress.paid * loan.principal / progress.total || 0));
+            }, 0);
+            
+            // Total receivable
+            const totalReceivable = activeLoans.reduce((sum, loan) => {
+                const installments = generateInstallments(loan);
+                const totalLoanAmount = installments.reduce((s, inst) => s + inst.amount, 0);
+                const progress = getLoanProgress(loan.id);
+                return sum + Math.max(0, totalLoanAmount - progress.paid);
+            }, 0);
+            
+            // Potential profit
+            const potentialProfit = totalReceivable - moneyStreet;
+            const profitMargin = moneyStreet > 0 ? (potentialProfit / moneyStreet) * 100 : 0;
+            
+            // Today received
+            const today = new Date().toISOString().split('T')[0];
+            const todayPayments = payments.filter(p => p.paymentDate === today);
+            const todayAmount = todayPayments.reduce((sum, p) => sum + p.amount, 0);
+            
+            // Update DOM
+            document.getElementById('kpi-money-street').textContent = formatCurrency(moneyStreet);
+            document.getElementById('kpi-receivable').textContent = formatCurrency(totalReceivable);
+            document.getElementById('kpi-profit').textContent = formatCurrency(potentialProfit);
+            document.getElementById('kpi-margin').textContent = `${profitMargin.toFixed(1)}% margem`;
+            document.getElementById('kpi-today').textContent = formatCurrency(todayAmount);
+            document.getElementById('today-count').textContent = `${todayPayments.length} pagamentos`;
+        }
+
+        function updateTodayAgenda() {
+            const today = new Date().toISOString().split('T')[0];
+            const todayPayments = [];
+            
+            loans.filter(l => l.status === 'active').forEach(loan => {
+                const installments = generateInstallments(loan);
+                const client = clients.find(c => c.id === loan.clientId);
+                
+                installments.forEach(installment => {
+                    if (installment.dueDate === today) {
+                        const loanPayments = payments.filter(p => 
+                            p.loanId === loan.id && p.installmentNumber === installment.number);
+                        const totalPaid = loanPayments.reduce((sum, p) => sum + p.amount, 0);
+                        const remainingAmount = installment.amount - totalPaid;
+                        
+                        if (remainingAmount > 0) {
+                            todayPayments.push({
+                                client,
+                                loan,
+                                installment: installment.number,
+                                amount: remainingAmount,
+                                dueDate: installment.dueDate
+                            });
+                        }
+                    }
+                });
+            });
+            
+            const agendaContainer = document.getElementById('today-agenda');
+            
+            if (todayPayments.length === 0) {
+                agendaContainer.innerHTML = `
+                    <div class="empty-state">
+                        <i class="fas fa-calendar-check"></i>
+                        <p>Nenhum pagamento para hoje</p>
+                    </div>
+                `;
+            } else {
+                agendaContainer.innerHTML = todayPayments.map(payment => `
+                    <div class="agenda-item today">
+                        <div class="agenda-avatar">
+                            ${payment.client.name.split(' ').map(n => n[0]).join('').substring(0, 2)}
+                        </div>
+                        <div class="agenda-content">
+                            <div class="agenda-name">${payment.client.name}</div>
+                            <div class="agenda-info">Parcela ${payment.installment}/${payment.loan.installments}</div>
+                        </div>
+                        <div class="agenda-amount">${formatCurrency(payment.amount)}</div>
+                    </div>
+                `).join('');
+            }
+        }
+
+        function updateClientStats() {
+            clients.forEach(client => updateClientStatus(client.id));
+            
+            const emDia = clients.filter(c => c.status === 'Em Dia').length;
+            const atraso = clients.filter(c => c.status === 'Em Atraso').length;
+            
+            document.getElementById('clients-ok').textContent = emDia;
+            document.getElementById('clients-late').textContent = atraso;
+        }
+
+        function updateClientsSection() {
+            const clientsList = document.getElementById('clients-list');
+            const searchTerm = document.getElementById('client-search')?.value.toLowerCase() || '';
+            const activeFilter = document.querySelector('.filter-tab.active')?.dataset.filter || 'all';
+            
+            let filteredClients = clients.filter(client => {
+                const matchesSearch = client.name.toLowerCase().includes(searchTerm) || 
+                                    (client.cpf && client.cpf.includes(searchTerm.replace(/\D/g, '')));
+                const matchesFilter = activeFilter === 'all' || client.status === activeFilter;
+                return matchesSearch && matchesFilter;
+            });
+            
+            document.getElementById('total-clients').textContent = clients.length;
+            
+            if (filteredClients.length === 0) {
+                clientsList.innerHTML = `
+                    <div class="empty-state">
+                        <i class="fas fa-users"></i>
+                        <p>${clients.length === 0 ? 'Nenhum cliente cadastrado' : 'Nenhum cliente encontrado'}</p>
+                        ${clients.length === 0 ? '<button class="btn-primary mt-4" onclick="showModal(\'new-client\')">Cadastrar Primeiro Cliente</button>' : ''}
+                    </div>
+                `;
+                return;
+            }
+            
+            clientsList.innerHTML = filteredClients.map(client => {
+                const activeLoans = loans.filter(l => l.clientId === client.id && l.status === 'active').length;
+                const totalDebt = getClientTotalDebt(client.id);
+                
+                return `
+                    <div class="client-item" onclick="showClientDetails('${client.id}')">
+                        <div class="agenda-avatar">
+                            ${client.name.split(' ').map(n => n[0]).join('').substring(0, 2)}
+                        </div>
+                        <div class="agenda-content">
+                            <div class="agenda-name">${client.name}</div>
+                            <div class="agenda-info">
+                                ${activeLoans} empréstimos • ${formatCurrency(totalDebt)} devendo
+                            </div>
+                        </div>
+                        <div class="status-badge status-${client.status === 'Em Dia' ? 'em-dia' : client.status === 'Em Atraso' ? 'atraso' : 'novo'}">
+                            ${client.status}
+                        </div>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        function updateLoansSection() {
+            const loansList = document.getElementById('loans-list');
+            const activeLoans = loans.filter(l => l.status === 'active');
+            
+            // Update summary
+            const totalPrincipal = activeLoans.reduce((sum, loan) => sum + loan.principal, 0);
+            const averageRate = activeLoans.length > 0 
+                ? activeLoans.reduce((sum, loan) => sum + (loan.interestType === 'percentage' ? loan.interestRate : 0), 0) / activeLoans.length 
+                : 0;
+            
+            document.getElementById('total-loans').textContent = activeLoans.length;
+            document.getElementById('loans-active').textContent = activeLoans.length;
+            document.getElementById('loans-total-value').textContent = formatCurrency(totalPrincipal);
+            document.getElementById('loans-avg-rate').textContent = averageRate.toFixed(1) + '%';
+            
+            if (activeLoans.length === 0) {
+                loansList.innerHTML = `
+                    <div class="empty-state">
+                        <i class="fas fa-hand-holding-usd"></i>
+                        <p>Nenhum empréstimo cadastrado</p>
+                        <button class="btn-primary mt-4" onclick="showModal('new-loan')">Criar Primeiro Empréstimo</button>
+                    </div>
+                `;
+                return;
+            }
+            
+            loansList.innerHTML = activeLoans.map(loan => {
+                const client = clients.find(c => c.id === loan.clientId);
+                const nextInstallment = getNextInstallment(loan.id);
+                const progress = getLoanProgress(loan.id);
+                
+                return `
+                    <div class="loan-card">
+                        <div class="loan-header">
+                            <div class="loan-client">${client ? client.name : 'Cliente removido'}</div>
+                            <div class="loan-id">#${loan.id.substr(-6)}</div>
+                        </div>
+                        <div class="loan-details">
+                            <div class="loan-detail">
+                                <div class="loan-detail-label">Principal</div>
+                                <div class="loan-detail-value">${formatCurrency(loan.principal)}</div>
+                            </div>
+                            <div class="loan-detail">
+                                <div class="loan-detail-label">Taxa</div>
+                                <div class="loan-detail-value">${loan.interestType === 'fixed' ? formatCurrency(loan.interestRate) : loan.interestRate + '%'}</div>
+                            </div>
+                            <div class="loan-detail">
+                                <div class="loan-detail-label">Progresso</div>
+                                <div class="loan-detail-value">${progress.percentage.toFixed(0)}%</div>
+                            </div>
+                            <div class="loan-detail">
+                                <div class="loan-detail-label">Próximo</div>
+                                <div class="loan-detail-value">${nextInstallment ? formatDate(nextInstallment.dueDate) : 'Quitado'}</div>
+                            </div>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: ${progress.percentage}%"></div>
+                        </div>
+                        <div class="action-buttons">
+                            <button class="btn-secondary flex-1" onclick="registerPaymentQuick('${loan.id}')">
+                                <i class="fas fa-money-bill mr-1"></i>
+                                Pagamento
+                            </button>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        function updatePaymentsSection() {
+            const paymentsList = document.getElementById('payments-list');
+            const periodFilter = document.querySelector('.filter-tab.active')?.dataset.period || 'today';
+            const today = new Date();
+            let startDate, endDate;
+            
+            switch (periodFilter) {
+                case 'today':
+                    startDate = new Date(today);
+                    endDate = new Date(today);
+                    break;
+                case 'week':
+                    startDate = new Date(today);
+                    endDate = new Date(today);
+                    endDate.setDate(today.getDate() + 7);
+                    break;
+                case 'month':
+                    startDate = new Date(today);
+                    endDate = new Date(today);
+                    endDate.setMonth(today.getMonth() + 1);
+                    break;
+                case 'all':
+                    startDate = null;
+                    endDate = null;
+                    break;
+            }
+            
+            const relevantPayments = [];
+            
+            loans.filter(l => l.status === 'active').forEach(loan => {
+                const installments = generateInstallments(loan);
+                const client = clients.find(c => c.id === loan.clientId);
+                
+                installments.forEach(installment => {
+                    const installmentDate = new Date(installment.dueDate);
+                    
+                    if (!startDate || (installmentDate >= startDate && installmentDate <= endDate)) {
+                        const loanPayments = payments.filter(p => 
+                            p.loanId === loan.id && p.installmentNumber === installment.number);
+                        const totalPaid = loanPayments.reduce((sum, p) => sum + p.amount, 0);
+                        const remainingAmount = installment.amount - totalPaid;
+                        
+                        if (remainingAmount > 0) {
+                            relevantPayments.push({
+                                client,
+                                loan,
+                                installment: installment.number,
+                                amount: remainingAmount,
+                                dueDate: installment.dueDate,
+                                isOverdue: installmentDate < today,
+                                isToday: installment.dueDate === today.toISOString().split('T')[0]
+                            });
+                        }
+                    }
+                });
+            });
+            
+            relevantPayments.sort((a, b) => new Date(a.dueDate) - new Date(b.dueDate));
+            
+            const totalAmount = relevantPayments.reduce((sum, p) => sum + p.amount, 0);
+            document.getElementById('payments-total').textContent = formatCurrency(totalAmount);
+            document.getElementById('payments-count').textContent = relevantPayments.length;
+            
+            if (relevantPayments.length === 0) {
+                paymentsList.innerHTML = `
+                    <div class="empty-state">
+                        <i class="fas fa-calendar-times"></i>
+                        <p>Nenhum pagamento encontrado</p>
+                    </div>
+                `;
+                return;
+            }
+            
+            paymentsList.innerHTML = relevantPayments.map(payment => `
+                <div class="payment-item">
+                    <div class="agenda-avatar">
+                        ${payment.client.name.split(' ').map(n => n[0]).join('').substring(0, 2)}
+                    </div>
+                    <div class="payment-info">
+                        <div class="payment-name">${payment.client.name}</div>
+                        <div class="payment-details">
+                            Parcela ${payment.installment}/${payment.loan.installments} • 
+                            ${payment.isOverdue ? 'Em atraso' : payment.isToday ? 'Vence hoje' : formatDate(payment.dueDate)}
+                        </div>
+                    </div>
+                    <div class="payment-amount">
+                        <div class="payment-value">${formatCurrency(payment.amount)}</div>
+                        <button class="btn-secondary text-xs" onclick="registerPaymentQuick('${payment.loan.id}')">
+                            Receber
+                        </button>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function updateSettingsSection() {
+            document.getElementById('stats-clients').textContent = clients.length;
+            document.getElementById('stats-loans').textContent = loans.length;
+            document.getElementById('stats-payments').textContent = payments.length;
+        }
+
+        function updateClientOptions() {
+            const selects = document.querySelectorAll('select[name="clientId"]');
+            selects.forEach(select => {
+                const currentValue = select.value;
+                select.innerHTML = '<option value="">Selecione um cliente</option>' +
+                    clients.map(client => 
+                        `<option value="${client.id}" ${client.id === currentValue ? 'selected' : ''}>${client.name}</option>`
+                    ).join('');
+            });
+        }
+
+        function updateLoanOptions() {
+            const selects = document.querySelectorAll('select[name="loanId"]');
+            selects.forEach(select => {
+                const activeLoans = loans.filter(l => l.status === 'active');
+                select.innerHTML = '<option value="">Selecione um empréstimo</option>' +
+                    activeLoans.map(loan => {
+                        const client = clients.find(c => c.id === loan.clientId);
+                        const nextInstallment = getNextInstallment(loan.id);
+                        return `<option value="${loan.id}">${client ? client.name : 'Cliente removido'} - Parcela ${nextInstallment ? nextInstallment.number : 'N/A'}</option>`;
+                    }).join('');
+            });
+        }
+
+        // Quick payment registration
+        function registerPaymentQuick(loanId) {
+            const loan = loans.find(l => l.id === loanId);
+            if (!loan) return;
+            
+            const nextInstallment = getNextInstallment(loanId);
+            if (!nextInstallment) return;
+            
+            showModal('register-payment');
+            
+            setTimeout(() => {
+                const loanSelect = document.querySelector('#register-payment-modal select[name="loanId"]');
+                const amountInput = document.querySelector('#register-payment-modal input[name="amount"]');
+                
+                if (loanSelect) {
+                    loanSelect.value = loanId;
+                    handleLoanSelectionChange(loanSelect);
+                }
+                
+                if (amountInput) {
+                    amountInput.value = nextInstallment.remainingAmount.toFixed(2);
+                }
+            }, 100);
+        }
+
+        function handleLoanSelectionChange(select) {
+            const loanId = select.value;
+            const details = document.getElementById('payment-details');
+            
+            if (!loanId) {
+                details.style.display = 'none';
+                return;
+            }
+            
+            const loan = loans.find(l => l.id === loanId);
+            const nextInstallment = getNextInstallment(loanId);
+            
+            if (nextInstallment) {
+                document.getElementById('payment-installment-info').textContent = 
+                    `${nextInstallment.number}/${loan.installments}`;
+                document.getElementById('payment-installment-value').textContent = 
+                    formatCurrency(nextInstallment.remainingAmount);
+                document.getElementById('payment-due-date').textContent = 
+                    formatDate(nextInstallment.dueDate);
+                
+                const amountInput = document.querySelector('#register-payment-modal input[name="amount"]');
+                if (amountInput) {
+                    amountInput.value = nextInstallment.remainingAmount.toFixed(2);
+                }
+                
+                details.style.display = 'block';
+            } else {
+                details.style.display = 'none';
+            }
+        }
+
+        // Client details
+        function showClientDetails(clientId) {
+            const client = clients.find(c => c.id === clientId);
+            if (!client) return;
+            
+            const clientLoans = loans.filter(l => l.clientId === clientId);
+            const clientPayments = payments.filter(p => 
+                clientLoans.some(l => l.id === p.loanId));
+            
+            const content = document.getElementById('client-details-content');
+            content.innerHTML = `
+                <div class="space-y-4">
+                    <div class="text-center">
+                        <div class="w-20 h-20 bg-gradient-to-br from-blue-500 to-purple-600 rounded-full flex items-center justify-center mx-auto mb-4">
+                            <span class="text-white font-bold text-xl">${client.name.split(' ').map(n => n[0]).join('').substring(0, 2)}</span>
+                        </div>
+                        <h3 class="text-xl font-bold">${client.name}</h3>
+                        <p class="text-gray-600">${client.phone ? formatPhone(client.phone) : 'Telefone não informado'}</p>
+                    </div>
+                    
+                    <div class="bg-gray-50 p-4 rounded-lg">
+                        <h4 class="font-semibold mb-3">Informações</h4>
+                        <div class="space-y-2 text-sm">
+                            <div class="flex justify-between">
+                                <span class="text-gray-600">CPF:</span>
+                                <span class="font-medium">${client.cpf ? formatCPF(client.cpf) : 'Não informado'}</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span class="text-gray-600">Profissão:</span>
+                                <span class="font-medium">${client.profession || 'Não informado'}</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span class="text-gray-600">Status:</span>
+                                <span class="status-badge status-${client.status === 'Em Dia' ? 'em-dia' : client.status === 'Em Atraso' ? 'atraso' : 'novo'}">${client.status}</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span class="text-gray-600">Cadastrado em:</span>
+                                <span class="font-medium">${formatDate(client.createdAt)}</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="stats-grid">
+                        <div class="stat-card">
+                            <div class="stat-value">${clientLoans.filter(l => l.status === 'active').length}</div>
+                            <div class="stat-label">Empréstimos Ativos</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-value">${formatCurrency(getClientTotalDebt(clientId))}</div>
+                            <div class="stat-label">Saldo Devedor</div>
+                        </div>
+                    </div>
+                    
+                    <div class="space-y-2">
+                        <button class="btn-primary" onclick="hideModal('client-details'); showModal('new-loan');">
+                            <i class="fas fa-hand-holding-usd mr-2"></i>
+                            Novo Empréstimo
+                        </button>
+                    </div>
+                </div>
+            `;
+            
+            showModal('client-details');
+        }
+
+        function refreshAgenda() {
+            updateTodayAgenda();
+            showNotification('Agenda atualizada!');
+        }
+
+        // Data management
+        function exportData() {
+            const data = {
+                clients,
+                loans,
+                payments,
+                loanTypes,
+                settings,
+                exportDate: new Date().toISOString()
+            };
+            
+            const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
+            const url = URL.createObjectURL(blob);
+            
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `sga-backup-${new Date().toISOString().split('T')[0]}.json`;
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+            
+            showNotification('Dados exportados com sucesso!');
+        }
+
+        function importData(event) {
+            const file = event.target.files[0];
+            if (!file) return;
+            
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                try {
+                    const data = JSON.parse(e.target.result);
+                    
+                    if (data.clients) clients = data.clients;
+                    if (data.loans) loans = data.loans;
+                    if (data.payments) payments = data.payments;
+                    if (data.loanTypes) loanTypes = data.loanTypes;
+                    if (data.settings) settings = data.settings;
+                    
+                    saveClients();
+                    saveLoans();
+                    savePayments();
+                    saveLoanTypes();
+                    localStorage.setItem('sga_settings', JSON.stringify(settings));
+                    
+                    updateDashboard();
+                    updateClientsSection();
+                    updateLoansSection();
+                    updatePaymentsSection();
+                    updateSettingsSection();
+                    updateClientOptions();
+                    updateLoanOptions();
+                    
+                    showNotification('Dados importados com sucesso!');
+                } catch (error) {
+                    showNotification('Erro ao importar dados. Verifique o arquivo.', 'error');
+                }
+            };
+            reader.readAsText(file);
+            
+            event.target.value = '';
+        }
+
+        function confirmClearData() {
+            if (confirm('ATENÇÃO: Esta ação irá apagar TODOS os dados do sistema. Esta ação não pode ser desfeita. Tem certeza?')) {
+                if (confirm('Você tem certeza ABSOLUTA? Todos os clientes, empréstimos e pagamentos serão perdidos!')) {
+                    clients = [];
+                    loans = [];
+                    payments = [];
+                    loanTypes = [
+                        { id: 1, name: 'Padrão 20%', type: 'percentage', value: 20, description: 'Taxa padrão de 20% ao mês' },
+                        { id: 2, name: 'Taxa Fixa R$ 100', type: 'fixed', value: 100, description: 'Taxa fixa de R$ 100,00' }
+                    ];
+                    settings = {};
+                    
+                    localStorage.clear();
+                    saveLoanTypes();
+                    
+                    updateDashboard();
+                    updateClientsSection();
+                    updateLoansSection();
+                    updatePaymentsSection();
+                    updateSettingsSection();
+                    updateClientOptions();
+                    updateLoanOptions();
+                    
+                    showNotification('Todos os dados foram apagados!', 'warning');
+                }
+            }
+        }
+
+        // Loan types management
+        function loadLoanTypesModal() {
+            const container = document.getElementById('loan-types-list');
+            container.innerHTML = loanTypes.map(type => `
+                <div class="bg-gray-50 p-4 rounded-lg flex items-center justify-between">
+                    <div>
+                        <h4 class="font-semibold text-gray-800">${type.name}</h4>
+                        <p class="text-sm text-gray-600">
+                            ${type.type === 'percentage' ? `${type.value}% ao mês` : formatCurrency(type.value)}
+                        </p>
+                        ${type.description ? `<p class="text-xs text-gray-500 mt-1">${type.description}</p>` : ''}
+                    </div>
+                    <button class="text-red-500 hover:text-red-700" onclick="deleteLoanType(${type.id})">
+                        <i class="fas fa-trash"></i>
+                    </button>
+                </div>
+            `).join('');
+        }
+
+        function deleteLoanType(typeId) {
+            if (confirm('Tem certeza que deseja excluir este tipo de empréstimo?')) {
+                const index = loanTypes.findIndex(lt => lt.id === typeId);
+                if (index > -1) {
+                    loanTypes.splice(index, 1);
+                    saveLoanTypes();
+                    loadLoanTypesModal();
+                    updateLoanTypeOptions();
+                    showNotification('Tipo de empréstimo excluído com sucesso!');
+                }
+            }
+        }
+
+        function addLoanType(loanTypeData) {
+            const loanType = {
+                id: generateId(),
+                ...loanTypeData,
+                value: parseFloat(loanTypeData.value)
+            };
+            
+            loanTypes.push(loanType);
+            saveLoanTypes();
+            loadLoanTypesModal();
+            updateLoanTypeOptions();
+            showNotification('Tipo de empréstimo criado com sucesso!');
+        }
+
+        function updateLoanTypeOptions() {
+            const selects = document.querySelectorAll('select[name="loanType"]');
+            selects.forEach(select => {
+                const currentValue = select.value;
+                select.innerHTML = '<option value="">Selecione um tipo</option>' +
+                    loanTypes.map(type => 
+                        `<option value="${type.id}" ${type.id == currentValue ? 'selected' : ''}>${type.name}</option>`
+                    ).join('');
+            });
+        }
+
+        // Business settings
+        function loadBusinessSettings() {
+            const businessName = document.getElementById('business-name-input');
+            const theme = document.getElementById('theme-input');
+            const currency = document.getElementById('currency-input');
+            
+            if (settings.businessName) businessName.value = settings.businessName;
+            if (settings.theme) theme.value = settings.theme;
+            if (settings.currency) currency.value = settings.currency;
+        }
+
+        function saveBusinessSettings(settingsData) {
+            settings = { ...settings, ...settingsData };
+            localStorage.setItem('sga_settings', JSON.stringify(settings));
+            showNotification('Configurações salvas com sucesso!');
+        }
+
+        // PWA functionality
+        let deferredPrompt;
+        let newWorker;
+        
+        // Register Service Worker
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', async () => {
+                try {
+                    const registration = await navigator.serviceWorker.register(createServiceWorkerBlob());
+                    console.log('SW registered: ', registration);
+                    
+                    // Check for updates
+                    registration.addEventListener('updatefound', () => {
+                        newWorker = registration.installing;
+                        newWorker.addEventListener('statechange', () => {
+                            if (newWorker.state === 'installed' && navigator.serviceWorker.controller) {
+                                showUpdatePrompt();
+                            }
+                        });
+                    });
+                } catch (registrationError) {
+                    console.log('SW registration failed: ', registrationError);
+                }
+            });
+        }
+
+        // Create service worker blob
+        function createServiceWorkerBlob() {
+            const swCode = `
+                const CACHE_NAME = 'sga-finance-v1.0.0';
+                const urlsToCache = [
+                    '/',
+                    'https://cdn.tailwindcss.com/3.3.0/tailwind.min.css',
+                    'https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap',
+                    'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css'
+                ];
+
+                self.addEventListener('install', (event) => {
+                    event.waitUntil(
+                        caches.open(CACHE_NAME)
+                            .then((cache) => cache.addAll(urlsToCache))
+                            .then(() => self.skipWaiting())
+                    );
+                });
+
+                self.addEventListener('fetch', (event) => {
+                    event.respondWith(
+                        caches.match(event.request)
+                            .then((response) => {
+                                if (response) {
+                                    return response;
+                                }
+                                return fetch(event.request).catch(() => {
+                                    if (event.request.destination === 'document') {
+                                        return caches.match('/');
+                                    }
+                                });
+                            })
+                    );
+                });
+
+                self.addEventListener('activate', (event) => {
+                    event.waitUntil(
+                        caches.keys().then((cacheNames) => {
+                            return Promise.all(
+                                cacheNames.map((cacheName) => {
+                                    if (cacheName !== CACHE_NAME) {
+                                        return caches.delete(cacheName);
+                                    }
+                                })
+                            );
+                        }).then(() => self.clients.claim())
+                    );
+                });
+
+                // Background sync for when app comes back online
+                self.addEventListener('sync', (event) => {
+                    if (event.tag === 'background-sync') {
+                        console.log('Background sync triggered');
+                    }
+                });
+
+                // Push notifications (future enhancement)
+                self.addEventListener('push', (event) => {
+                    const options = {
+                        body: event.data ? event.data.text() : 'Nova notificação do SGA Finance',
+                        icon: '/icon-192x192.png',
+                        badge: '/badge-72x72.png',
+                        vibrate: [100, 50, 100],
+                        data: {
+                            dateOfArrival: Date.now(),
+                            primaryKey: 1
+                        },
+                        actions: [
+                            {
+                                action: 'explore',
+                                title: 'Abrir App',
+                                icon: '/images/checkmark.png'
+                            },
+                            {
+                                action: 'close',
+                                title: 'Fechar',
+                                icon: '/images/xmark.png'
+                            }
+                        ]
+                    };
+                    
+                    event.waitUntil(
+                        self.registration.showNotification('SGA Finance', options)
+                    );
+                });
+            `;
+            
+            const blob = new Blob([swCode], { type: 'application/javascript' });
+            return URL.createObjectURL(blob);
+        }
+
+        // Install prompt handling
+        window.addEventListener('beforeinstallprompt', (e) => {
+            e.preventDefault();
+            deferredPrompt = e;
+            
+            // Show install prompt after 30 seconds if not installed
+            setTimeout(() => {
+                if (!isAppInstalled()) {
+                    showInstallPrompt();
+                }
+            }, 30000);
+        });
+
+        function isAppInstalled() {
+            return window.matchMedia('(display-mode: standalone)').matches || 
+                   window.navigator.standalone || 
+                   localStorage.getItem('sga_app_installed') === 'true';
+        }
+
+        function showInstallPrompt() {
+            if (deferredPrompt && !isAppInstalled()) {
+                document.getElementById('install-prompt').classList.add('show');
+            }
+        }
+
+        function hideInstallPrompt() {
+            document.getElementById('install-prompt').classList.remove('show');
+            localStorage.setItem('sga_install_prompt_dismissed', 'true');
+        }
+
+        async function installPWA() {
+            if (deferredPrompt) {
+                deferredPrompt.prompt();
+                const { outcome } = await deferredPrompt.userChoice;
+                
+                if (outcome === 'accepted') {
+                    localStorage.setItem('sga_app_installed', 'true');
+                    showNotification('✅ App instalado com sucesso!');
+                    
+                    // Track installation
+                    setTimeout(() => {
+                        showNotification('🎉 Agora você pode acessar o SGA direto da tela inicial!');
+                    }, 2000);
+                } else {
+                    showNotification('Instalação cancelada');
+                }
+                
+                hideInstallPrompt();
+                deferredPrompt = null;
+            }
+        }
+
+        function showUpdatePrompt() {
+            document.getElementById('update-prompt').classList.add('show');
+        }
+
+        function updateApp() {
+            if (newWorker) {
+                newWorker.postMessage({ action: 'skipWaiting' });
+                window.location.reload();
+            }
+        }
+
+        // Online/Offline status
+        function updateOnlineStatus() {
+            const offlineIndicator = document.getElementById('offline-indicator');
+            
+            if (navigator.onLine) {
+                offlineIndicator.classList.remove('show');
+                // Trigger background sync when coming back online
+                if ('serviceWorker' in navigator && 'sync' in window.ServiceWorkerRegistration.prototype) {
+                    navigator.serviceWorker.ready.then((registration) => {
+                        return registration.sync.register('background-sync');
+                    });
+                }
+            } else {
+                offlineIndicator.classList.add('show');
+            }
+        }
+
+        window.addEventListener('online', updateOnlineStatus);
+        window.addEventListener('offline', updateOnlineStatus);
+
+        // Save data with offline support
+        function saveDataWithSync(key, data) {
+            localStorage.setItem(key, JSON.stringify(data));
+            
+            // Store in IndexedDB for better offline support
+            if ('indexedDB' in window) {
+                const request = indexedDB.open('SGADatabase', 1);
+                
+                request.onupgradeneeded = function(e) {
+                    const db = e.target.result;
+                    if (!db.objectStoreNames.contains('data')) {
+                        db.createObjectStore('data');
+                    }
+                };
+                
+                request.onsuccess = function(e) {
+                    const db = e.target.result;
+                    const transaction = db.transaction(['data'], 'readwrite');
+                    const store = transaction.objectStore('data');
+                    store.put(data, key);
+                };
+            }
+        }
+
+        // Enhanced notification system for PWA
+        function showPWANotification(title, body, tag = 'general') {
+            if ('serviceWorker' in navigator && 'Notification' in window) {
+                if (Notification.permission === 'granted') {
+                    navigator.serviceWorker.ready.then((registration) => {
+                        registration.showNotification(title, {
+                            body: body,
+                            icon: '/icon-192x192.png',
+                            badge: '/badge-72x72.png',
+                            tag: tag,
+                            vibrate: [100, 50, 100],
+                            data: {
+                                url: '/',
+                                timestamp: Date.now()
+                            }
+                        });
+                    });
+                } else if (Notification.permission !== 'denied') {
+                    Notification.requestPermission().then((permission) => {
+                        if (permission === 'granted') {
+                            showPWANotification(title, body, tag);
+                        }
+                    });
+                }
+            }
+        }
+
+        // App shortcuts and quick actions
+        function setupAppShortcuts() {
+            if (isAppInstalled()) {
+                // Add keyboard shortcuts for PWA
+                document.addEventListener('keydown', (e) => {
+                    if (e.ctrlKey || e.metaKey) {
+                        switch (e.key) {
+                            case 'n':
+                                e.preventDefault();
+                                showModal('new-client');
+                                break;
+                            case 'l':
+                                e.preventDefault();
+                                showModal('new-loan');
+                                break;
+                            case 'p':
+                                e.preventDefault();
+                                showModal('register-payment');
+                                break;
+                        }
+                    }
+                });
+            }
+        }
+
+        // Enhanced storage with PWA features
+        function enhancedSaveClients() {
+            saveClients();
+            saveDataWithSync('sga_clients', clients);
+        }
+
+        function enhancedSaveLoans() {
+            saveLoans();
+            saveDataWithSync('sga_loans', loans);
+        }
+
+        function enhancedSavePayments() {
+            savePayments();
+            saveDataWithSync('sga_payments', payments);
+        }
+
+        // Replace original save functions
+        const originalSaveClients = saveClients;
+        const originalSaveLoans = saveLoans;
+        const originalSavePayments = savePayments;
+
+        saveClients = enhancedSaveClients;
+        saveLoans = enhancedSaveLoans;
+        savePayments = enhancedSavePayments;
+
+        // App performance monitoring
+        function trackPerformance() {
+            if ('performance' in window) {
+                window.addEventListener('load', () => {
+                    const perfData = performance.getEntriesByType('navigation')[0];
+                    console.log('App load time:', perfData.loadEventEnd - perfData.fetchStart, 'ms');
+                });
+            }
+        }
+
+        // Initialize PWA features
+        function initializePWA() {
+            updateOnlineStatus();
+            setupAppShortcuts();
+            trackPerformance();
+            
+            // Show install prompt hint for first-time users
+            if (!localStorage.getItem('sga_install_prompt_dismissed') && !isAppInstalled()) {
+                setTimeout(() => {
+                    showNotification('💡 Dica: Você pode instalar este app para acesso mais rápido!');
+                }, 10000);
+            }
+            
+            // Enhanced notifications for app actions
+            if (isAppInstalled()) {
+                const originalShowNotification = showNotification;
+                showNotification = function(message, type = 'success') {
+                    originalShowNotification(message, type);
+                    
+                    // Show PWA notification for important actions
+                    if (type === 'success' && (
+                        message.includes('cadastrado') || 
+                        message.includes('criado') || 
+                        message.includes('registrado')
+                    )) {
+                        showPWANotification('SGA Finance', message, 'action');
+                    }
+                };
+            }
+        }
+
+        // Event listeners
+        document.addEventListener('DOMContentLoaded', function() {
+            // Initialize PWA features
+            initializePWA();
+            // Navigation
+            document.querySelectorAll('.nav-item').forEach(item => {
+                item.addEventListener('click', () => {
+                    showSection(item.dataset.section);
+                });
+            });
+
+            // Form submissions
+            document.getElementById('new-client-form').addEventListener('submit', async function(e) {
+                e.preventDefault();
+                const button = this.querySelector('button[type="submit"]');
+                showLoading(button);
+                clearFormErrors(this);
+                
+                const formData = new FormData(this);
+                const clientData = Object.fromEntries(formData.entries());
+                
+                let hasErrors = false;
+                
+                if (!clientData.name.trim()) {
+                    showFormError(this.querySelector('[name="name"]'), 'Nome é obrigatório');
+                    hasErrors = true;
+                }
+                
+                if (!clientData.phone.trim()) {
+                    showFormError(this.querySelector('[name="phone"]'), 'Telefone é obrigatório');
+                    hasErrors = true;
+                }
+                
+                if (clientData.cpf && !validateCPF(clientData.cpf)) {
+                    showFormError(this.querySelector('[name="cpf"]'), 'CPF inválido');
+                    hasErrors = true;
+                }
+                
+                if (hasErrors) {
+                    hideLoading(button);
+                    return;
+                }
+                
+                if (clientData.cpf && clients.some(c => c.cpf === clientData.cpf.replace(/\D/g, ''))) {
+                    showFormError(this.querySelector('[name="cpf"]'), 'CPF já cadastrado');
+                    hideLoading(button);
+                    return;
+                }
+                
+                if (clientData.cpf) {
+                    clientData.cpf = clientData.cpf.replace(/\D/g, '');
+                }
+                
+                await new Promise(resolve => setTimeout(resolve, 500));
+                
+                addClient(clientData);
+                hideModal('new-client');
+                hideLoading(button);
+            });
+
+            document.getElementById('new-loan-form').addEventListener('submit', async function(e) {
+                e.preventDefault();
+                const button = this.querySelector('button[type="submit"]');
+                showLoading(button);
+                clearFormErrors(this);
+                
+                const formData = new FormData(this);
+                const loanData = Object.fromEntries(formData.entries());
+                
+                let hasErrors = false;
+                
+                if (!loanData.clientId) {
+                    showFormError(this.querySelector('[name="clientId"]'), 'Selecione um cliente');
+                    hasErrors = true;
+                }
+                
+                if (!loanData.principal || parseFloat(loanData.principal) <= 0) {
+                    showFormError(this.querySelector('[name="principal"]'), 'Valor principal deve ser maior que zero');
+                    hasErrors = true;
+                }
+                
+                if (!loanData.installments || parseInt(loanData.installments) <= 0) {
+                    showFormError(this.querySelector('[name="installments"]'), 'Número de parcelas deve ser maior que zero');
+                    hasErrors = true;
+                }
+                
+                if (!loanData.firstDueDate) {
+                    showFormError(this.querySelector('[name="firstDueDate"]'), 'Data de vencimento é obrigatória');
+                    hasErrors = true;
+                }
+                
+                if (hasErrors) {
+                    hideLoading(button);
+                    return;
+                }
+                
+                if (!loanData.interestRate) loanData.interestRate = 0;
+                if (!loanData.interestType) loanData.interestType = 'percentage';
+                if (!loanData.frequency) loanData.frequency = 'monthly';
+                
+                await new Promise(resolve => setTimeout(resolve, 500));
+                
+                addLoan(loanData);
+                hideModal('new-loan');
+                hideLoading(button);
+            });
+
+            document.getElementById('register-payment-form').addEventListener('submit', async function(e) {
+                e.preventDefault();
+                const button = this.querySelector('button[type="submit"]');
+                showLoading(button);
+                clearFormErrors(this);
+                
+                const formData = new FormData(this);
+                const paymentData = Object.fromEntries(formData.entries());
+                
+                let hasErrors = false;
+                
+                if (!paymentData.loanId) {
+                    showFormError(this.querySelector('[name="loanId"]'), 'Selecione um empréstimo');
+                    hasErrors = true;
+                }
+                
+                if (!paymentData.amount || parseFloat(paymentData.amount) <= 0) {
+                    showFormError(this.querySelector('[name="amount"]'), 'Valor deve ser maior que zero');
+                    hasErrors = true;
+                }
+                
+                if (!paymentData.paymentDate) {
+                    showFormError(this.querySelector('[name="paymentDate"]'), 'Data do pagamento é obrigatória');
+                    hasErrors = true;
+                }
+                
+                if (hasErrors) {
+                    hideLoading(button);
+                    return;
+                }
+                
+                const nextInstallment = getNextInstallment(paymentData.loanId);
+                if (nextInstallment) {
+                    paymentData.installmentNumber = nextInstallment.number;
+                }
+                
+                await new Promise(resolve => setTimeout(resolve, 500));
+                
+                addPayment(paymentData);
+                hideModal('register-payment');
+                hideLoading(button);
+            });
+
+            // Business settings form
+            document.getElementById('business-settings-form').addEventListener('submit', async function(e) {
+                e.preventDefault();
+                const button = this.querySelector('button[type="submit"]');
+                showLoading(button);
+                
+                const formData = new FormData(this);
+                const settingsData = Object.fromEntries(formData.entries());
+                
+                await new Promise(resolve => setTimeout(resolve, 500));
+                
+                saveBusinessSettings(settingsData);
+                hideModal('business-settings');
+                hideLoading(button);
+            });
+
+            // New loan type form
+            document.getElementById('new-loan-type-form').addEventListener('submit', async function(e) {
+                e.preventDefault();
+                const button = this.querySelector('button[type="submit"]');
+                showLoading(button);
+                clearFormErrors(this);
+                
+                const formData = new FormData(this);
+                const loanTypeData = Object.fromEntries(formData.entries());
+                
+                let hasErrors = false;
+                
+                if (!loanTypeData.name.trim()) {
+                    showFormError(this.querySelector('[name="name"]'), 'Nome é obrigatório');
+                    hasErrors = true;
+                }
+                
+                if (!loanTypeData.value || parseFloat(loanTypeData.value) < 0) {
+                    showFormError(this.querySelector('[name="value"]'), 'Valor deve ser maior ou igual a zero');
+                    hasErrors = true;
+                }
+                
+                if (hasErrors) {
+                    hideLoading(button);
+                    return;
+                }
+                
+                await new Promise(resolve => setTimeout(resolve, 500));
+                
+                addLoanType(loanTypeData);
+                hideModal('new-loan-type');
+                hideLoading(button);
+            });
+
+            // Enhanced search functionality
+            const clientSearch = document.getElementById('client-search');
+            const searchSuggestions = document.getElementById('search-suggestions');
+            
+            if (clientSearch) {
+                let searchTimeout;
+                
+                clientSearch.addEventListener('input', function() {
+                    clearTimeout(searchTimeout);
+                    searchTimeout = setTimeout(() => {
+                        updateClientsSection();
+                        showSearchSuggestions(this.value);
+                    }, 300); // Debounce search
+                });
+
+                clientSearch.addEventListener('focus', function() {
+                    if (this.value) showSearchSuggestions(this.value);
+                });
+
+                clientSearch.addEventListener('blur', function() {
+                    setTimeout(() => searchSuggestions.classList.remove('show'), 150);
+                });
+            }
+
+            function showSearchSuggestions(query) {
+                if (!query.trim()) {
+                    searchSuggestions.classList.remove('show');
+                    return;
+                }
+
+                const suggestions = clients
+                    .filter(client => 
+                        client.name.toLowerCase().includes(query.toLowerCase()) ||
+                        (client.cpf && client.cpf.includes(query.replace(/\D/g, '')))
+                    )
+                    .slice(0, 5)
+                    .map(client => `
+                        <div class="search-suggestion-item" onclick="selectSearchSuggestion('${client.name}')">
+                            <div class="font-medium">${client.name}</div>
+                            <div class="text-xs text-gray-500">${client.cpf ? formatCPF(client.cpf) : 'CPF não informado'}</div>
+                        </div>
+                    `).join('');
+
+                if (suggestions) {
+                    searchSuggestions.innerHTML = suggestions;
+                    searchSuggestions.classList.add('show');
+                } else {
+                    searchSuggestions.classList.remove('show');
+                }
+            }
+
+            function selectSearchSuggestion(name) {
+                clientSearch.value = name;
+                searchSuggestions.classList.remove('show');
+                updateClientsSection();
+            }
+
+            // Filter tabs
+            document.querySelectorAll('.filter-tab').forEach(tab => {
+                tab.addEventListener('click', function() {
+                    this.parentNode.querySelectorAll('.filter-tab').forEach(t => t.classList.remove('active'));
+                    this.classList.add('active');
+                    
+                    if (this.closest('#clients-section')) {
+                        updateClientsSection();
+                    } else if (this.closest('#payments-section')) {
+                        updatePaymentsSection();
+                    }
+                });
+            });
+
+            // Loan preview
+            document.getElementById('new-loan-form').addEventListener('input', function() {
+                const principal = parseFloat(this.querySelector('[name="principal"]').value) || 0;
+                const installments = parseInt(this.querySelector('[name="installments"]').value) || 1;
+                const interestRate = parseFloat(this.querySelector('[name="interestRate"]').value) || 0;
+                const interestType = this.querySelector('[name="interestType"]')?.value || 'percentage';
+                
+                if (principal > 0) {
+                    let installmentValue, totalValue, profit;
+                    
+                    if (interestType === 'fixed') {
+                        installmentValue = (principal + interestRate) / installments;
+                        totalValue = principal + interestRate;
+                    } else {
+                        totalValue = principal * (1 + interestRate / 100);
+                        installmentValue = totalValue / installments;
+                    }
+                    
+                    profit = totalValue - principal;
+                    
+                    document.getElementById('preview-installment').textContent = formatCurrency(installmentValue);
+                    document.getElementById('preview-total').textContent = formatCurrency(totalValue);
+                    document.getElementById('preview-profit').textContent = formatCurrency(profit);
+                    
+                    document.getElementById('loan-preview').style.display = 'block';
+                } else {
+                    document.getElementById('loan-preview').style.display = 'none';
+                }
+            });
+
+            // Loan selection for payment
+            document.querySelector('select[name="loanId"]')?.addEventListener('change', function() {
+                handleLoanSelectionChange(this);
+            });
+
+            // CPF and phone formatting
+            document.addEventListener('input', function(e) {
+                if (e.target.name === 'cpf') {
+                    let value = e.target.value.replace(/\D/g, '');
+                    value = value.replace(/(\d{3})(\d)/, '$1.$2');
+                    value = value.replace(/(\d{3})(\d)/, '$1.$2');
+                    value = value.replace(/(\d{3})(\d{2})$/, '$1-$2');
+                    e.target.value = value;
+                }
+                
+                if (e.target.name === 'phone') {
+                    let value = e.target.value.replace(/\D/g, '');
+                    if (value.length <= 10) {
+                        value = value.replace(/(\d{2})(\d{4})(\d{4})/, '($1) $2-$3');
+                    } else {
+                        value = value.replace(/(\d{2})(\d{5})(\d{4})/, '($1) $2-$3');
+                    }
+                    e.target.value = value;
+                }
+            });
+
+            // Modal close on overlay click
+            document.querySelectorAll('.modal').forEach(modal => {
+                modal.addEventListener('click', function(e) {
+                    if (e.target === this) {
+                        this.classList.remove('active');
+                    }
+                });
+            });
+
+            // Initialize current time with greeting
+            function updateCurrentTime() {
+                const now = new Date();
+                const timeStr = now.toLocaleTimeString('pt-BR', { 
+                    hour: '2-digit', 
+                    minute: '2-digit' 
+                });
+                document.getElementById('current-time').textContent = timeStr;
+                
+                const dateStr = now.toLocaleDateString('pt-BR', { 
+                    weekday: 'long', 
+                    day: 'numeric',
+                    month: 'long'
+                });
+                
+                // Add contextual greeting
+                const hour = now.getHours();
+                let greeting = '';
+                if (hour < 12) greeting = 'Bom dia';
+                else if (hour < 18) greeting = 'Boa tarde';
+                else greeting = 'Boa noite';
+                
+                document.getElementById('dashboard-date').textContent = `${greeting}! ${dateStr}`;
+            }
+
+            // Pull to refresh functionality
+            let startY = 0;
+            let currentY = 0;
+            let isPulling = false;
+            
+            const contentArea = document.querySelector('.content-area');
+            const pullIndicator = document.createElement('div');
+            pullIndicator.className = 'pull-to-refresh';
+            pullIndicator.innerHTML = '<i class="fas fa-arrow-down"></i>';
+            contentArea.appendChild(pullIndicator);
+
+            contentArea.addEventListener('touchstart', (e) => {
+                if (contentArea.scrollTop === 0) {
+                    startY = e.touches[0].clientY;
+                    isPulling = true;
+                }
+            });
+
+            contentArea.addEventListener('touchmove', (e) => {
+                if (!isPulling) return;
+                
+                currentY = e.touches[0].clientY;
+                const diffY = currentY - startY;
+                
+                if (diffY > 0 && diffY < 100) {
+                    e.preventDefault();
+                    pullIndicator.style.transform = `translateX(-50%) translateY(${diffY - 60}px) rotate(${diffY * 2}deg)`;
+                    pullIndicator.classList.add('visible');
+                }
+            });
+
+            contentArea.addEventListener('touchend', () => {
+                if (isPulling && currentY - startY > 60) {
+                    pullIndicator.innerHTML = '<i class="fas fa-sync-alt"></i>';
+                    pullIndicator.classList.add('loading');
+                    
+                    // Simulate refresh
+                    setTimeout(() => {
+                        updateDashboard();
+                        updateClientsSection();
+                        updateLoansSection();
+                        updatePaymentsSection();
+                        
+                        pullIndicator.classList.remove('visible', 'loading');
+                        pullIndicator.innerHTML = '<i class="fas fa-arrow-down"></i>';
+                        pullIndicator.style.transform = 'translateX(-50%)';
+                        
+                        showNotification('📱 Dados atualizados!');
+                    }, 1500);
+                } else {
+                    pullIndicator.classList.remove('visible');
+                    pullIndicator.style.transform = 'translateX(-50%)';
+                }
+                
+                isPulling = false;
+            });
+
+            // Smart form suggestions
+            document.addEventListener('input', function(e) {
+                if (e.target.name === 'name' && e.target.value.length > 2) {
+                    const suggestions = [
+                        'João Silva Santos',
+                        'Maria Oliveira Costa',
+                        'Carlos Eduardo Lima',
+                        'Ana Paula Ferreira'
+                    ].filter(name => 
+                        name.toLowerCase().includes(e.target.value.toLowerCase()) &&
+                        name !== e.target.value
+                    ).slice(0, 3);
+
+                    const container = document.getElementById('name-suggestions');
+                    if (container && suggestions.length > 0) {
+                        container.innerHTML = suggestions.map(name => 
+                            `<span class="suggestion-chip" onclick="this.closest('.form-group').querySelector('input').value='${name}'; this.parentElement.innerHTML='';">${name}</span>`
+                        ).join('');
+                    }
+                }
+            });
+            
+            updateCurrentTime();
+            setInterval(updateCurrentTime, 1000);
+
+            // Initialize app
+            updateClientOptions();
+            updateLoanOptions();
+            updateDashboard();
+            updateClientsSection();
+            updateLoansSection();
+            updatePaymentsSection();
+            updateSettingsSection();
+        });
+    </script>
+</body>
+</html>
